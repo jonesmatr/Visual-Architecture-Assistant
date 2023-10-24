@@ -15,7 +15,7 @@ const server = new ApolloServer({
 
 const startApolloServer = async () => {
   await server.start();
-
+  
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   
@@ -26,9 +26,9 @@ const startApolloServer = async () => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });
   }
-  
-  app.use('/graphql', expressMiddleware(server));
 
+  app.use('/graphql', expressMiddleware(server));
+  
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
@@ -38,3 +38,4 @@ const startApolloServer = async () => {
 };
 
 startApolloServer();
+  
