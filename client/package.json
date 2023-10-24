@@ -8,7 +8,8 @@
     "start": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "heroku-build": "node_modules/.bin/vite build"
   },
   "dependencies": {
     "@apollo/client": "^3.8.6",
