@@ -32,9 +32,10 @@ const typeDefs = gql`
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): User
+    login(username: String!, email: String!, password: String!): Auth
     addImage(imageUrl: String!, description: String, tags: [String]!): Image
     addAPIPrompt(promptText: String!): APIPrompt
-    // ... other necessary mutations for updating and deleting
+   
   }
   type Auth {
     token: ID!
