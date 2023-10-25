@@ -1,29 +1,45 @@
-const typeDefs = `
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+const { gql } = require('apollo-server-express');
+const typeDefs = gql`
+  type User {
+    _id: ID!
+    username: String!
+    email: String!
+    password: String!
+    savedImages: [Image]!
   }
-
-  type Comment {
-    _id: ID
-    commentText: String
+  type Image {
+    _id: ID!
+    imageUrl: String!
+    description: String
+    tags: [String]!
     createdAt: String
+    uploadedBy: User!
   }
-
+  type APIPrompt {
+    _id: ID!
+    promptText: String!
+    responseImages: [Image]!
+    createdAt: String
+    requestedBy: User!
+  }
   type Query {
-    thoughts: [Thought]!
-    thought(thoughtId: ID!): Thought
+    users: [User]!
+    user(userId: ID!): User
+    images: [Image]!
+    image(imageId: ID!): Image
+    apiPrompts: [APIPrompt]!
+    apiPrompt(promptId: ID!): APIPrompt
   }
-
   type Mutation {
-    addThought(thoughtText: String!, thoughtAuthor: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addUser(username: String!, email: String!, password: String!): User
+    login(username: String!, email: String!, password: String!): Auth
+    addImage(imageUrl: String!, description: String, tags: [String]!): Image
+    addAPIPrompt(promptText: String!): APIPrompt
+   
+  }
+  type Auth {
+    token: ID!
+    user: User
   }
 `;
-
 module.exports = typeDefs;
