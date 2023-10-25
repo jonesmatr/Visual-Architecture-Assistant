@@ -1,3 +1,3 @@
-const Thought = require('./Thought');
+const Thought = require('./Image');
 
-module.exports = { Thought };
+module.exports = { Image };
