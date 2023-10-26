@@ -5,8 +5,6 @@ import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
-import Navigation from "./components/Navigation";
-import Header from "./components/Header";
 import Home from './pages/Home';
 
 const authLink = setContext((_, { headers }) => {
@@ -32,9 +30,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Header>
-          <Navigation />
-        </Header>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
