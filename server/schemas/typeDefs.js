@@ -16,6 +16,7 @@ const typeDefs = `
   type Query {
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought
+    getCloudinaryImage(ing)
   }
 
   type Mutation {
