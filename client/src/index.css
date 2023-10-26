@@ -45,6 +45,12 @@ html, body, #root {
   transform: translateY(-50%); /* This will vertically center the Nav */
 }
 
+/* In your CSS file */
+.light-card-bg {
+  background-color: rgba(226, 198, 198, 0.1) !important; 
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;

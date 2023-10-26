@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { Container, Row, Col, FormControl, Button } from 'react-bootstrap';
+import { Container, Row, Col, FormControl, Button, Card } from 'react-bootstrap';
 
 const Home = () => {
     return (
         <Layout>
             <Container>
                 {/* Body */}
-                <Row className="mt-5">
+                <Row style={{ marginTop: '100px' }}>
                     <Col md={6}>
                         <h2>Hey, this is the prompt box you can enter text here:</h2>
                         <div className="mb-3">
@@ -17,7 +17,9 @@ const Home = () => {
                         </div>
                     </Col>
                     <Col md={6}>
-                        <img src="path_to_your_image.jpg" alt="Description" className="img-fluid" />
+                        <Card className="shadow-sm light-card-bg">
+                            <Card.Img variant="top" src="/front-page.png" alt="Front Page" />
+                        </Card>
                     </Col>
                 </Row>
             </Container>
