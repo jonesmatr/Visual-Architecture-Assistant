@@ -21,6 +21,23 @@ html, body, #root {
   padding: 0;
   overflow: hidden; /* Optional: This prevents any unwanted scrollbars */
 }
+.custom-navbar {
+  height: 80px; /* or whatever height NAV you prefer */
+  position: relative; /*this and absolute will not make the About Portfolio ... move along with the logo*/
+}
+
+.navbar-logo {
+  position: absolute; /* Absolute position the logo */
+  left: 40px; /* Adjust this value to move the logo left or right */
+  top: 50%; /* Center the logo vertically */
+  transform: translateY(-50%); /* Adjust the logo's vertical position */
+}
+
+.custom-navbar .custom-nav-link {
+  font-size: 33px;
+}
+
+
 
 a {
   font-weight: 500;
