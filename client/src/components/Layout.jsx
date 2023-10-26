@@ -10,8 +10,8 @@ const Layout = ({ children }) => {
                 <Navbar.Brand href="/">
                     <img
                         src="/logo.png"  // Path to your logo
-                        width="96"   // Adjust width as needed
-                        height="55"  // Adjust height as needed
+                        width="130"   // Adjust width as needed
+                        height="65"  // Adjust height as needed
                         className="d-inline-block align-top navbar-logo"
                         alt="Your Logo"
                     />
@@ -25,10 +25,11 @@ const Layout = ({ children }) => {
                     <Nav.Link href="#pricing" className="custom-nav-link">Pricing</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Nav>
-                    <Nav.Link href="#login">Login</Nav.Link>
-                    <Nav.Link href="#signup">Signup</Nav.Link>
+                <Nav className="login-signup-nav">
+                <Nav.Link href="#login" className="small-nav-link">Login</Nav.Link>
+                 <Nav.Link href="#signup" className="small-nav-link">Signup</Nav.Link>
                 </Nav>
+
             </Navbar>
 
             {/* Page Content */}
