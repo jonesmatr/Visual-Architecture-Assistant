@@ -151,8 +151,16 @@ button:focus-visible {
 }
 
 .card-deck .card {
-  max-width: calc(33.33% - 20px); /* Assuming you want 3 cards with a little space in between */
+  height: 420px;
+  width: 30%;  /* Adjust this value as per your requirement */
+  margin: 1%;  /* Optional: Add some margin for spacing between cards */
 }
+
+.card-deck .card .card-body ul li {
+  font-size: 21px;  /* Adjust this value as per your requirement */
+  font-family: 'Oxygen', sans-serif;
+}
+
 
 @media screen and (max-width: 768px) {
   .cart {
