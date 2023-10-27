@@ -8,12 +8,7 @@ const PricingHeader = () => (
   <div className="pricing-header px-3 py-3 pt-md-5 pd-md-4 mx-auto text-center">
     <h1 className="display-4">Pricing</h1>
     <p className="lead">
-      Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Dolor aut ut vero,
-      voluptatem corrupti, eius natus pariatur
-      commodi in nesciunt itaque accusamus
-      reprehenderit nisi. Qui consectetur maiores
-      ipsam expedita inventore!
+    Unlock the power of visual storytelling. With our subscription plans, you can effortlessly create prompts to showcase your work. Let your clients experience your portfolio in a whole new light. Dive into a seamless interface where every photo tells a story. Don't just show your work; let your clients feel it.
     </p>
   </div>
 );
@@ -61,8 +56,8 @@ const Plans = () => {
       header: "Free",
       price: 0,
       features: [
-        "10 users included",
-        "2 GB of storage",
+        "1 users included",
+        "500 MB of storage",
         "Email support",
         "Help center access"
       ],
@@ -73,8 +68,8 @@ const Plans = () => {
       header: "Pro",
       price: 15,
       features: [
-        "20 users included",
-        "10 GB of storage",
+        "2 users included",
+        "1 GB of storage",
         "Priority email support",
         "Help center access"
       ],
@@ -85,7 +80,7 @@ const Plans = () => {
       header: "Enterprise",
       price: 29,
       features: [
-        "30 users included",
+        "5 users included",
         "15 GB storage",
         "Phone and email support",
         "Help center access"
