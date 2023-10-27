@@ -29,9 +29,7 @@ const typeDefs = gql`
     image(imageId: ID!): Image
     apiPrompts: [APIPrompt]!
     apiPrompt(promptId: ID!): APIPrompt
-    thoughts: [Thought]!
-    thought(thoughtId: ID!): Thought
-    getCloudinaryImage(ing)
+   
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): User

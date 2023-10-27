@@ -20,14 +20,14 @@ const Layout = ({ children }) => {
                 <Navbar.Toggle aria-controls="navbar-nav" />
                 <Navbar.Collapse id="navbar-nav" className="justify-content-center">
                     <Nav>
-                    <Nav.Link href="#about" className="custom-nav-link">About</Nav.Link>
-                    <Nav.Link href="#portfolio" className="custom-nav-link">Portfolio</Nav.Link>
-                    <Nav.Link href="#pricing" className="custom-nav-link">Pricing</Nav.Link>
+                    <Nav.Link href="about" className="custom-nav-link">About</Nav.Link>
+                    <Nav.Link href="portfolio" className="custom-nav-link">Portfolio</Nav.Link>
+                    <Nav.Link href="pricing" className="custom-nav-link">Pricing</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Nav className="login-signup-nav">
-                <Nav.Link href="#login" className="small-nav-link">Login</Nav.Link>
-                 <Nav.Link href="#signup" className="small-nav-link">Signup</Nav.Link>
+                <Nav.Link href="login" className="small-nav-link">Login</Nav.Link>
+                 <Nav.Link href="signup" className="small-nav-link">Signup</Nav.Link>
                 </Nav>
 
             </Navbar>
