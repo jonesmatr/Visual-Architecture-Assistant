@@ -1,46 +1,43 @@
-import { useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
-
+import Home from './pages/Home';
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
-}
-);
-
-const httpLink = createHttpLink({
-  uri: '/graphql',
 });
 
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-
-
-
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <ApolloProvider client={client}>
-      <SignupForm />
-      <LoginForm />
-      </ApolloProvider>
-    </>
+    <ApolloProvider client={client}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignupForm />} />
+          {/* Add other routes as needed */}
+        </Routes>
+      </Router>
+    </ApolloProvider>
   );
 }
 
