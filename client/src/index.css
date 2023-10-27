@@ -14,6 +14,69 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Optional: This prevents any unwanted scrollbars */
+}
+.custom-navbar {
+  height: 100px; /* or whatever height NAV you prefer */
+  position: relative; /*this and absolute will not make the About Portfolio ... move along with the logo*/
+}
+
+.navbar-logo {
+  position: absolute; /* Absolute position the logo */
+  left: 40px; /* Adjust this value to move the logo left or right */
+  top: 50%; /* Center the logo vertically */
+  transform: translateY(-50%); /* Adjust the logo's vertical position */
+}
+
+.custom-navbar .custom-nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  margin-right: 30px;
+}
+.login-signup-nav {
+  position: absolute; /*Again this wont move logo or Navbar-nav*/
+  right: 5%; /* Adjust this value to move the Nav to the desired position */
+  top: 50%;
+  transform: translateY(-50%); /* This will vertically center the Nav */
+}
+
+/* In your CSS file */
+.light-card-bg {
+  background-color: rgba(226, 198, 198, 0.1) !important; 
+}
+.custom-card {
+  padding: 12px; /* Adjust this value to control the space around the image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for a lifted effect */
+}
+
+div.prompt-content {
+  margin-top: 50px;
+}
+
+.describe-text {
+  font-family: 'Gruppo', sans-serif;
+  font-size: 40px; /* Adjust size as needed */
+  text-align: left;
+  margin-top: 22px;
+}
+
+.design-text {
+  font-family: 'Gruppo', sans-serif;
+  font-size: 28px; /* Adjust size to make it smaller */
+  text-align: left;
+  margin-bottom: 10px; /* Add some space below the text */
+}
+
+ .custom-textarea {
+  width: 100%; /* Adjust width as needed */
+  height: 150px; /* Adjust height as needed */
+}
+
 a {
   font-weight: 500;
   color: #646cff;
