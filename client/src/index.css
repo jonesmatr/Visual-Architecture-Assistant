@@ -135,7 +135,7 @@ button:focus-visible {
 /*PRICING STYLE*/
 .pricing-header {
   /* limit header width so that the paragraph is easier to read*/
-  max-width: 700px;
+  max-width: 900px;
 }
 
 .container {
@@ -145,19 +145,13 @@ button:focus-visible {
   max-width: 960px;
 }
 
+.card-deck {
+  display: flex;
+  justify-content: space-between;
+}
+
 .card-deck .card {
-  /* make sure the cards don't get too narrow */
-  min-width: 220px;
-}
-
-footer h5 {
-  text-transform: capitalize;
-}
-
-footer i > svg {
-  width: 2rem;
-  height: 2rem;
-  color: rgb(76, 54, 113);
+  max-width: calc(33.33% - 20px); /* Assuming you want 3 cards with a little space in between */
 }
 
 @media screen and (max-width: 768px) {
@@ -167,10 +161,5 @@ footer i > svg {
     max-height: auto;
     box-shadow: none;
     background-color: inherit;
-  }
-
-  .cart-closed {
-    position: relative;
-    margin: 0 auto;
   }
 }

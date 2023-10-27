@@ -6,6 +6,7 @@ import "./App.css";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
 import Home from './pages/Home';
+import Pricing from './pages/Pricing'; // Import the Pricing component
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
+          <Route path="/pricing" element={<Pricing />} /> {/* Add the route for the Pricing page */}
           {/* Add other routes as needed */}
         </Routes>
       </Router>

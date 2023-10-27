@@ -1,7 +1,7 @@
 // Pricing.jsx
-
 import React from "react";
-import "./styles.css";
+import Layout from '../components/Layout';
+import "../index.css";
 
 // PricingHeader Component
 const PricingHeader = () => (
@@ -114,12 +114,14 @@ const Plans = () => {
 // Main Pricing Component
 const Pricing = () => {
   return (
-    <div className="App" id="top">
-      <PricingHeader />
-      <div className="container">
-        <Plans />
+    <Layout>
+      <div className="App" id="top">
+        <PricingHeader />
+        <div className="container">
+          <Plans />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
