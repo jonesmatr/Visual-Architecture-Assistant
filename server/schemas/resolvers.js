@@ -4,12 +4,12 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    // thoughts: async () => {
-    //   return Thought.find().sort({ createdAt: -1 });
+    // images: async () => {
+    //   return Image.find().sort({ createdAt: -1 });
     // },
 
-    // thought: async (parent, { thoughtId }) => {
-    //   return Thought.findOne({ _id: thoughtId });
+    // image: async (parent, { imageId }) => {
+    //   return Image.findOne({ _id: imagaeId });
     // },
   },
 
