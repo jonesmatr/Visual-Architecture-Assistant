@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import Portfolio from './pages/Portfolio';
 
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
