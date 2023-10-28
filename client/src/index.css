@@ -191,18 +191,6 @@ body, html {
   justify-content: center; /* Center content horizontally */
 }
 
-.banner-sec {
-  background: 
-    url(https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg) no-repeat left bottom,
-    url(https://images.pexels.com/photos/417273/pexels-photo-417273.jpeg) no-repeat center center,
-    url(https://images.pexels.com/photos/1029615/pexels-photo-1029615.jpeg) no-repeat right top;
-  background-size: cover;
-  min-height: 500px;
-  border-radius: 0 10px 10px 0;
-  padding: 0;
-}
-
-
 .container {
   background: #fff;
   border-radius: 10px;
