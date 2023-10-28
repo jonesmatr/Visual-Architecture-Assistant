@@ -1,6 +1,11 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { Container, Row, Col, FormControl, Button, Card } from 'react-bootstrap';
+import {Cloudinary} from "@cloudinary/url-gen";
+
+const App = () => {
+  const cld = new Cloudinary({cloud: {cloudName: 'dbindi09a'}});
+};
 
 const Home = () => {
     return (
