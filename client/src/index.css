@@ -130,3 +130,42 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/*PRICING STYLE*/
+.pricing-header {
+  /* limit header width so that the paragraph is easier to read*/
+  max-width: 900px;
+}
+
+.container {
+  /* overwrite all max-width value smaller than 960px in all media queries */
+  /* overwriting max-width 540 @ mw 576 & max-width 720 @ mw 768 */
+  /* providing wider width (smaller x-margin) across tablet and desktop */
+  max-width: 960px;
+}
+
+.card-deck {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-deck .card {
+  height: 420px;
+  width: 30%;  /* Adjust this value as per your requirement */
+  margin: 1%;  /* Optional: Add some margin for spacing between cards */
+}
+
+.card-deck .card .card-body ul li {
+  font-size: 21px;  /* Adjust this value as per your requirement */
+  font-family: 'Oxygen', sans-serif;
+}
+
+
+@media screen and (max-width: 768px) {
+  .cart {
+    position: relative;
+    max-width: 100%;
+    max-height: auto;
+    box-shadow: none;
+    background-color: inherit;
+  }
+}
