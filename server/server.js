@@ -1,9 +1,11 @@
- const express = require('express');
+const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas'); // Import schemas
 const { authMiddleware } = require('./utils/auth'); // Import authentication middleware
+const { graphqlUploadExpress } = require('graphql-upload'); // Import GraphQL Upload
+const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,8 +17,21 @@ app.use(express.json());
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware,
+  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+  context: ({ req }) => {
+    // Your context setup here.
+  },
+  uploads: {
+    maxFileSize: 10000000, // Maximum file size in bytes (adjust as needed).
+    maxFiles: 1, // Maximum number of files allowed per request (adjust as needed).
+  },
 });
+
+
+// Enable handling of uploads
+app.use(graphqlUploadExpress());
+
+
 
 async function startServer() {
   // Start the Apollo server
