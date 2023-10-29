@@ -1,6 +1,6 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 const typeDefs = gql`
-   scalar Upload 
+  scalar Upload
 
   type User {
     _id: ID!
@@ -31,14 +31,13 @@ const typeDefs = gql`
     image(imageId: ID!): Image
     apiPrompts: [APIPrompt]!
     apiPrompt(promptId: ID!): APIPrompt
-   
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-   uploadImage(image: Upload!, description: String, tags: [String]!): Image
+    uploadImage(image: Upload!, description: String, tags: [String]!): Image
     addAPIPrompt(promptText: String!): APIPrompt
-   
+    deleteImage(publicId: String!): Boolean
   }
   type Auth {
     token: ID!
