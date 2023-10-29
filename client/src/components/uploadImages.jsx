@@ -4,8 +4,7 @@ import { fetchPhotos, openUploadWidget } from "../CloudinaryService";
 import auth from "../utils/auth";
 import { ADD_IMAGE } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+
 
 function UploadImages() {
   const [images, setImages] = useState([]);

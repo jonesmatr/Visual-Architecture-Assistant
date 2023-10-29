@@ -35,6 +35,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     uploadImage(imageUrl: String!, description: String, tags: [String]!): Image
+    
     addAPIPrompt(promptText: String!): APIPrompt
     deleteImage(publicId: String!): Boolean
   }
