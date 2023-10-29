@@ -5,7 +5,6 @@ import auth from "../utils/auth";
 import { ADD_IMAGE } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-
 function UploadImages() {
   const [images, setImages] = useState([]);
   const [addImage] = useMutation(ADD_IMAGE);
@@ -39,19 +38,24 @@ function UploadImages() {
               tags: photos.info.files[0].uploadInfo.tags,
             },
           })
-          .then((response) => {
-            // Handle the response from the addImage mutation
-            if (response.data && response.data.addImage) {
-              console.log("Image data added to the database:", response.data.addImage);
-            } else {
-              console.error("Failed to add image data to the database.");
-            }
-          })
-          .catch((error) => {
-            console.error("Error while adding image data to the database:", error);
-          });
-      }  
-        
+            .then((response) => {
+              // Handle the response from the addImage mutation
+              if (response.data && response.data.addImage) {
+                console.log(
+                  "Image data added to the database:",
+                  response.data.addImage
+                );
+              } else {
+                console.error("Failed to add image data to the database.");
+              }
+            })
+            .catch((error) => {
+              console.error(
+                "Error while adding image data to the database:",
+                error
+              );
+            });
+        }
       } else {
         console.log(error);
       }
@@ -98,7 +102,11 @@ function UploadImages() {
         <section>
           {images.map((image) => (
             <div key={image.public_id}>
-              <Image publicId={image.public_id} fetch-format="auto" quality="auto" />
+              <Image
+                publicId={image.public_id}
+                fetch-format="auto"
+                quality="auto"
+              />
               <button onClick={() => handleDelete(image.public_id)}>
                 Delete Image
               </button>
