@@ -34,7 +34,7 @@ const resolvers = {
       return { token, user };
     },
 
-    uploadImage: async (_, { image, description, tags }, context) => {
+    uploadImage: async (_, { imageUrl, description, tags }, context) => {
       try {
         // Check if the user is authenticated (you can add your authentication logic here)
         if (!context.user) {
@@ -42,22 +42,15 @@ const resolvers = {
             "You must be logged in to upload an image"
           );
         }
-
-        // Upload the base64 encoded image to Cloudinary
-        const result = await cloudinary.uploader.upload(image, {
-          folder: "your-upload-folder", // Specify your folder in Cloudinary
-          // Other Cloudinary options as needed
-        });
-
         // Create a new Image document in your database with the Cloudinary URL
         const newImage = await Image.create({
-          imageUrl: result.secure_url,
+          imageUrl,
           description,
           tags,
           uploadedBy: context.user._id, // Assign the user who uploaded the image
           // Add other fields as needed
         });
-
+        console.log('Newly created image:', newImage);
         return newImage;
       } catch (error) {
         throw new Error("Failed to upload image: " + error.message);
@@ -66,7 +59,7 @@ const resolvers = {
     deleteImage: async (_, { publicId }) => {
       try {
         const result = await cloudinary.uploader.destroy(publicId);
-        if (result.result === 'ok') {
+        if (result.result === "ok") {
           // Image deleted successfully
           // Update your database here (remove the reference to the deleted image)
           return true;
@@ -75,7 +68,7 @@ const resolvers = {
           return false;
         }
       } catch (error) {
-        console.error('Error deleting image:', error);
+        console.error("Error deleting image:", error);
         return false;
       }
     },
