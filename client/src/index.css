@@ -1,3 +1,5 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -169,3 +171,177 @@ button:focus-visible {
     background-color: inherit;
   }
 }
+
+
+
+/*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*/
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.login-block {
+  background: #c5d8ff;
+  background: -webkit-linear-gradient(to bottom, #fffffe, #f6f2f2);
+  background: linear-gradient(to bottom, #f3f3f3, #cfe2e9);
+  height: 100vh; /* Full height of the viewport */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin-bottom: 160px; /*MOVING THE WHOLE CONTAINRER*/
+}
+
+.carousel-inner {
+  border-radius: 0 10px 10px 0;
+}
+
+.carousel-caption {
+  text-align: left;
+  left: 5%;
+}
+
+.login-sec {
+  padding: 50px 30px;
+  position: relative;
+}
+
+.login-sec .copy-text {
+  position: absolute;
+  width: 80%;
+  bottom: 20px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.login-sec .copy-text i {
+  color: #FEB58A;
+}
+
+.login-sec .copy-text a {
+  color: #E36262;
+}
+
+.login-sec h2 {
+  margin-bottom: 30px;
+  font-weight: 800;
+  font-size: 30px;
+  color: #DE6262;
+}
+
+.login-sec h2:after {
+  content: " ";
+  width: 100px;
+  height: 5px;
+  background: #FEB58A;
+  display: block;
+  margin-top: 20px;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-login {
+  background: #DE6262;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;  /* Adjust padding f color */
+  border: 10px;  /* To remove any default borders */
+  border-radius: 5px;  /* Rounded corners */
+  cursor: pointer;  /* Hand cursor on hover */
+  transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+  float: right;  /* Move the button to the right */
+  margin-top: 15px;  /* Space between the password box and the button */
+}
+.btn-login:hover {
+  background-color: #E36262;  /* Slightly lighter shade for hover effect */
+}
+
+
+.banner-text {
+  width: 70%;
+  position: absolute;
+  bottom: 40px;
+  padding-left: 20px;
+}
+
+.banner-text h2 {
+  color: #fff;
+  font-weight: 600;
+}
+
+.banner-text h2:after {
+  content: " ";
+  width: 100px;
+  height: 5px;
+  background: #FFF;
+  display: block;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+
+.banner-text p {
+  color: #fff;
+}
+
+/*ABOUT*//*ABOUT*//*ABOUT*//*ABOUT*//*ABOUT*//*ABOUT*//*ABOUT*/
+
+/* Carousel Container */
+#aboutCarousel {
+  background-color: rgba(224, 224, 224, 0.7); /* Light gray background */
+}
+
+#aboutCarousel .carousel-caption {
+  right: auto;
+  left: 16%; /* Move the text slightly more to the left */
+  width: 40%; /* Set a fixed width for the text container */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left; /* Align text to the left */
+}
+
+#aboutCarousel .carousel-item img {
+  width: 100%;
+  max-width: 500px; /* Adjust as needed */
+  object-fit: cover;
+  margin-left: 12%; /* Move the image 10% to the left */
+  display: block;
+}
+
+/* Carousel Captions */
+#aboutCarousel .carousel-caption h3 {
+  color: hwb(0 33% 67%);
+  font-size: 44px; /* Adjust font size as needed */
+  margin-bottom: 10px;
+}
+
+#aboutCarousel .carousel-caption p {
+  color: hwb(0 33% 67%);
+  font-size: 22px; /* Adjust font size as needed */
+  word-wrap: break-word; /* Ensure words wrap to the next line */
+  margin-bottom: 170px;
+}
+
+/* Remove shadow from team member container */
+.container.mt-5 {
+  box-shadow: none;
+}
+
+.title {
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.profile-image {
+  width: 150px; /* Adjust as needed */
+  height: 150px; /* Adjust as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image covers the entire space without distortion */
+}
+

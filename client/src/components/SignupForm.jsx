@@ -5,6 +5,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import Layout from '../components/Layout';
 
 const SignupForm = () => {
   // set initial form state
@@ -54,60 +55,102 @@ const SignupForm = () => {
   };
 
   return (
-    <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your signup!
-        </Alert>
+    <Layout> 
+    <section className="login-block">
+      <div className="container">
+        <div className="row">
+          {/* Signup Section */}
+          <div className="col-md-4 login-sec">
+            <h2 className="text-center">Sign Up Now</h2>
+            <form className="login-form" onSubmit={handleFormSubmit}>
+              
+              <div className="form-group">
+                <label htmlFor="username" className="text-uppercase">Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="username"
+                  onChange={handleInputChange}
+                  value={userFormData.username}
+                  required
+                />
+              </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='username'>Username</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Your username'
-            name='username'
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
-        </Form.Group>
+              <div className="form-group">
+                <label htmlFor="email" className="text-uppercase">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  onChange={handleInputChange}
+                  value={userFormData.email}
+                  required
+                />
+              </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Your email address'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
+              <div className="form-group">
+                <label htmlFor="password" className="text-uppercase">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  onChange={handleInputChange}
+                  value={userFormData.password}
+                  required
+                />
+              </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success'>
-          Submit
-        </Button>
-      </Form>
-    </>
+              <div className="form-check">
+                <button type="submit" className="btn-login">Submit</button>
+              </div>
+            </form>
+            <div className="copy-text">Created with <i className="fa fa-heart"></i> by V.A.A</div>
+          </div>
+
+          {/* Image or Banner Section (optional) */}
+          <div className="col-md-8 banner-sec">
+          {/* Main Carousel Container */}
+  <div id="bannerCarousel" className="carousel slide" data-ride="carousel">
+
+{/* Carousel Indicators: These are the small dots at the bottom of the carousel that indicate which slide is currently active */}
+        <ul className="carousel-indicators">
+        <li data-target="#bannerCarousel" data-slide-to="0" className="active"></li>
+        <li data-target="#bannerCarousel" data-slide-to="1"></li>
+        <li data-target="#bannerCarousel" data-slide-to="2"></li>
+      </ul>
+
+{/* Carousel Slides: This section contains the images that will be displayed in the carousel */}
+<div className="carousel-inner">
+    {/* First Slide */}
+    <div className="carousel-item active" data-interval="10000">
+        <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg" alt="Image 1" width="100%" />
+    </div>
+    {/* Second Slide */}
+    <div className="carousel-item" data-interval="10000">
+        <img src="https://images.pexels.com/photos/417273/pexels-photo-417273.jpeg" alt="Image 2" width="100%" />
+    </div>
+    {/* Third Slide */}
+    <div className="carousel-item" data-interval="10000">
+        <img src="https://images.pexels.com/photos/1029615/pexels-photo-1029615.jpeg" alt="Image 3" width="100%" />
+    </div>
+</div>
+
+{/* Carousel Controls */}
+{/* Left Control (Previous Slide) */}
+<a className="carousel-control-prev" href="#bannerCarousel" data-slide="prev">
+    <span className="carousel-control-prev-icon"></span>
+</a>
+{/* Right Control (Next Slide) */}
+<a className="carousel-control-next" href="#bannerCarousel" data-slide="next">
+    <span className="carousel-control-next-icon"></span>
+</a>
+
+      </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </Layout> 
   );
 };
 
