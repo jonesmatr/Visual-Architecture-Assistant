@@ -22,3 +22,25 @@ export const ADD_USER = gql`
             }
         }
     }`;
+
+ export const ADD_IMAGE = gql`
+ mutation addImage($imageUrl: String!, $description: String, $tags: [String]!) {   
+    addImage(imageUrl:$imageUrl, description: $description, tags: $tags) {
+        _id
+        imageUrl
+        description
+        tags
+        uploadedBy   
+    }
+ }`;
+
+ export const DELETE_IMAGE = gql`
+    mutation deleteImage($imageId: ID!) {
+        deleteImage(imageId: $imageId) {
+            _id
+            imageUrl
+            description
+            tags
+            uploadedBy
+        }
+    }`;
