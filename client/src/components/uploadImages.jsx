@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import { CloudinaryContext, Image } from "cloudinary-react";
 import { fetchPhotos, openUploadWidget } from "../CloudinaryService";
 import auth from "../utils/auth";
-import { ADD_IMAGE } from "../utils/mutations";
-import { useMutation } from "@apollo/client";
+import { ADD_IMAGE, DELETE_IMAGE } from "../utils/mutations";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_IMAGES } from "../utils/queries";
 
 function UploadImages() {
   const [images, setImages] = useState([]);
+
+  const {loading, error, data} = useQuery(GET_IMAGES);
   const [addImage] = useMutation(ADD_IMAGE);
+  const [deleteImage] = useMutation(DELETE_IMAGE);
+
   // Add this function below the useState declaration
   const addImageToState = (uploadedImage) => {
     const { public_id, description, tags } = uploadedImage;
@@ -28,14 +33,14 @@ function UploadImages() {
 
     openUploadWidget(uploadOptions, (error, photos) => {
       if (!error) {
-        console.log(photos.info?.files?.uploadInfo);
         if (photos.event === "success") {
-          addImageToState(photos.info.files[0].uploadInfo);
+          console.log(photos);
+          addImageToState(photos.info);
           addImage({
             variables: {
-              publicId: photos.info.files[0].uploadInfo.public_id,
+              imageUrl: photos.info.public_id,
               description: "info",
-              tags: photos.info.files[0].uploadInfo.tags,
+              tags: photos.info.tags,
             },
           })
             .then((response) => {
@@ -62,38 +67,42 @@ function UploadImages() {
     });
   };
 
-  const handleDelete = (publicId) => {
+  const handleDelete = (imageId) => {
     // Add any necessary authorization headers if required
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${auth.getToken()}`, // Replace with your actual JWT token
-    };
-
-    // Make an HTTP request to your server to delete the image
-    fetch(`/api/delete-image/${publicId}`, {
-      method: "DELETE",
-      headers: headers,
+    deleteImage({
+      variables: {
+        imageId: imageId,
+      },
     })
       .then((response) => {
-        if (response.ok) {
-          // Image was successfully deleted, update your state to remove it
-          const updatedImages = images.filter(
-            (image) => image.publicId !== publicId
+        // Handle the response from the deleteImage mutation
+
+        if (response.data && response.data.deleteImage) {
+          console.log(
+            "Image data deleted from the database:",
+            response.data.deleteImage
           );
-          setImages(updatedImages);
+          const newUpdatedImages = images.filter(
+            (image) => image._id !== imageId
+          );
+          setImages(newUpdatedImages);
+          console.log(newUpdatedImages);
         } else {
-          // Handle error if the server responds with an error status
-          console.error("Failed to delete image:", response.statusText);
+          console.error("Failed to delete image data to the database.");
         }
       })
       .catch((error) => {
-        console.error("Error while deleting image:", error);
+        console.error("Error while delete image data to the database:", error);
       });
   };
 
   useEffect(() => {
-    fetchPhotos("image", setImages);
-  }, []);
+    // fetchPhotos("image", setImages);
+    if (data) {
+      setImages(data.images);
+    }
+    
+  }, [data]);
   console.log("Images:", images);
   return (
     <CloudinaryContext cloudName="dbindi09a">
@@ -101,13 +110,13 @@ function UploadImages() {
         <button onClick={() => beginUpload("image")}>Upload Image</button>
         <section>
           {images.map((image) => (
-            <div key={image.public_id}>
+            <div key={image.imageUrl}>
               <Image
-                publicId={image.public_id}
+                publicId={image.imageUrl}
                 fetch-format="auto"
                 quality="auto"
               />
-              <button onClick={() => handleDelete(image.public_id)}>
+              <button onClick={() => handleDelete(image._id)}>
                 Delete Image
               </button>
             </div>

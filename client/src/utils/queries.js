@@ -28,11 +28,7 @@ export const GET_IMAGES = gql`
       imageUrl
       description
       tags
-      uploadedBy {
-        _id
-        username
-        email
-      }
+      uploadedBy 
     }
   }
 `;
