@@ -3,14 +3,28 @@ const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const cloudinary = require("cloudinary").v2; // Import Cloudinary
 
+//configure cloudinary
+cloudinary.config({
+  cloud_name: 'dbindi09a',
+  api_key: '849987797231149',
+  api_secret: 'Yu3f24mkLIGhQq1T7Fg96LsFZCw',
+  secure: true,
+}
+);
+    
+
+
 const resolvers = {
-  Query: {
-    // images: async () => {
-    //   return Image.find().sort({ createdAt: -1 });
-    // },
-    // image: async (parent, { imageId }) => {
-    //   return Image.findOne({ _id: imagaeId });
-    // },
+  Query: {///this query is crashing app////
+    images: async () => {
+      return Image.find().sort({ createdAt: -1 });
+    },
+    image: async (_parent, { imageId }) => {
+      return Image.findOne({ _id: imageId });
+    },
+    users: async () => {
+      return User.find();
+    },
   },
 
   Mutation: {
@@ -34,7 +48,7 @@ const resolvers = {
       return { token, user };
     },
 
-    uploadImage: async (_, { imageUrl, description, tags }, context) => {
+    addImage: async (_, { imageUrl, description, tags }, context) => {
       try {
         // Check if the user is authenticated (you can add your authentication logic here)
         if (!context.user) {
@@ -47,7 +61,9 @@ const resolvers = {
           imageUrl,
           description,
           tags,
-          uploadedBy: context.user._id, // Assign the user who uploaded the image
+          // uploadedBy:  "653d08b98870be171c6d0b55",
+          uploadedBy: context.user._id 
+          // Assign the user who uploaded the image
           // Add other fields as needed
         });
         console.log('Newly created image:', newImage);
@@ -56,16 +72,32 @@ const resolvers = {
         throw new Error("Failed to upload image: " + error.message);
       }
     },
-    deleteImage: async (_, { publicId }) => {
+    deleteImage: async (_, { imageId }, context) => {
       try {
+        // Check if the user is authenticated (you can add your authentication logic here)
+        if (!context.user) {
+          throw new AuthenticationError(
+            "You must be logged in to delete an image"
+          );
+        }
+        // Find the image by ID
+        const image = await Image.findById(imageId);
+        if (!image) {
+          throw new Error("Image not found");
+        }
+        // Delete the image from Cloudinary
+        // const publicId = image.imageUrl.split("/").pop().split(".")[0];
+        const publicId = image.imageUrl;
+        
         const result = await cloudinary.uploader.destroy(publicId);
         if (result.result === "ok") {
           // Image deleted successfully
           // Update your database here (remove the reference to the deleted image)
-          return true;
+          await Image.deleteOne({ _id: imageId });
+          return image;
         } else {
           // Image deletion failed
-          return false;
+          throw new Error("Image not deleted");
         }
       } catch (error) {
         console.error("Error deleting image:", error);

@@ -14,7 +14,7 @@ const typeDefs = gql`
     imageUrl: String!
     description: String
     tags: [String]!
-    uploadedBy: User!
+    uploadedBy: ID!
   }
   type APIPrompt {
     _id: ID!
@@ -34,10 +34,9 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    uploadImage(imageUrl: String!, description: String, tags: [String]!): Image
-    
+    addImage(imageUrl: String!, description: String, tags: [String]!): Image
     addAPIPrompt(promptText: String!): APIPrompt
-    deleteImage(publicId: String!): Boolean
+    deleteImage(imageId: ID): Image
   }
   type Auth {
     token: ID!

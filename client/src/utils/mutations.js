@@ -33,3 +33,14 @@ export const ADD_USER = gql`
         uploadedBy   
     }
  }`;
+
+ export const DELETE_IMAGE = gql`
+    mutation deleteImage($imageId: ID!) {
+        deleteImage(imageId: $imageId) {
+            _id
+            imageUrl
+            description
+            tags
+            uploadedBy
+        }
+    }`;

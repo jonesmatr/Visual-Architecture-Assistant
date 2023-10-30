@@ -18,9 +18,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-  context: ({ req }) => {
-    // Your context setup here.
-  },
+  context: authMiddleware,
   uploads: {
     maxFileSize: 10000000, // Maximum file size in bytes (adjust as needed).
     maxFiles: 1, // Maximum number of files allowed per request (adjust as needed).
