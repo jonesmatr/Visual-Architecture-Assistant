@@ -307,7 +307,7 @@ body, html {
 
 #aboutCarousel .carousel-item img {
   width: 100%;
-  max-width: 500px; /* Adjust as needed */
+  max-width: 500px; 
   object-fit: cover;
   margin-left: 12%; /* Move the image 10% to the left */
   display: block;
@@ -333,12 +333,12 @@ body, html {
 }
 
 .title {
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px; 
 }
 
 .profile-image {
-  width: 150px; /* Adjust as needed */
-  height: 150px; /* Adjust as needed */
+  width: 150px; 
+  height: 150px; 
   border-radius: 50%; /* Makes the image circular */
   object-fit: cover; /* Ensures the image covers the entire space without distortion */
 }
@@ -363,7 +363,7 @@ body, html {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  width: 35%; /* Adjusted width */
+  width: 35%; 
 }
 
 .image-grid img {
@@ -373,9 +373,44 @@ body, html {
 }
 
 .description {
-  flex: 1;
-  padding-right: 20px; /* adjust as needed */
+  padding-left: 5%;
+  text-align: left;
+  max-width: 60%;
+  padding-top: 3%;
 }
+
+.description h1 {
+  font-size: 2.5em; 
+  font-weight: bold;
+  color: #333; 
+  margin-bottom: 20px; /* Space below the h1 */
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+.description h4 {
+  font-size: 1em; 
+  font-weight: bold;
+  color: #555; /* Adjust color as needed */
+  margin-top: 30px; /* Space above the h2 */
+  margin-bottom: 15px; /* Space below the h2 */
+}
+
+.description p {
+  font-size: 1em;
+  color: #777; 
+  line-height: 1.5; 
+  margin-bottom: 20px; /* Space below each paragraph */
+}
+
+.main-heading::after {
+  content: ""; /* This is necessary for the pseudo-element to work */
+  display: block; /* Makes it a block-level element */
+  width: 90px; /* Adjust to match the width of "Welc" */
+  height: 2px; /* Adjust for desired thickness of the line */
+  background-color: #333; /* Adjust for desired color of the line */
+  margin: 30px 0; /* Adds some space above and below the line */
+}
+
 
 .contractors-categories {
   flex: 1;
@@ -387,7 +422,7 @@ body, html {
 }
 
 .contractors-categories li {
-  margin-bottom: 10px; /* adjust as needed */
+  margin-bottom: 10px; 
 }
 
 .left-section {
@@ -406,4 +441,17 @@ body, html {
   color: #1a1a1a !important;
 }
 
+.find-out-more-btn {
+  padding: 10px 20px;
+  background-color: #007BFF; /* Change to your preferred color */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
+  /* Optional: Add hover effect */
+  &:hover {
+      background-color: #0056b3; /* Darker shade for hover effect */
+  }
+}
