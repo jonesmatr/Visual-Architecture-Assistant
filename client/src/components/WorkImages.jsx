@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
+import { openUploadWidget } from './CloudinaryService';
 
 function WorkImages({ initialImages }) {
     const [images, setImages] = useState(initialImages);
 
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            // TODO: Send the image to the server to save it and get a unique ID
-            const newImage = { 
-                id: "NEW_IMAGE_ID", // This ID should come from the server
-                url: imageUrl,
-                description: ""
-            };
-            setImages([...images, newImage]);
-        }
+    const handleImageUpload = () => {
+        const options = {
+            cloudName: 'dbindi09a',
+            uploadPreset: 'new4new', // Replace with your preset
+            tags: ['portfolio'], 
+        };
+        
+        openUploadWidget(options, (error, result) => {
+            if (result.event === 'success') {
+                const newImage = {
+                    id: result.info.public_id,
+                    url: result.info.url,
+                    description: ""
+                };
+                setImages([...images, newImage]);
+                // TODO: Send the image details (URL, public_id, description) to the server to save
+            }
+        });
     };
 
     const handleDeleteImage = (imageId) => {
         // TODO: Send a request to the server to delete the image
+        // The server should also handle deletion from Cloudinary using the imageId (public_id)
         const updatedImages = images.filter(image => image.id !== imageId);
         setImages(updatedImages);
     };
@@ -33,7 +41,7 @@ function WorkImages({ initialImages }) {
 
     return (
         <div className="work-images-container">
-            <input type="file" onChange={handleImageUpload} />
+            <button onClick={handleImageUpload}>Upload Image</button>
             {images.map(image => (
                 <div key={image.id}>
                     <img src={image.url} alt="Work" />

@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
+import { openUploadWidget } from './CloudinaryService';
 
 function ProfilePicture({ initialProfilePic }) {
     const [profilePic, setProfilePic] = useState(initialProfilePic);
 
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            // Note: In a real-world scenario, you'd send this file to your server or a cloud service like Cloudinary.
-            const imageUrl = URL.createObjectURL(file);
-            setProfilePic(imageUrl);
-            // TODO: Send the image to the server to save it
-        }
+    const handleImageUpload = () => {
+        const options = {
+            cloudName: 'dbindi09a',
+            uploadPreset: 'YOUR_UPLOAD_PRESET', // Replace with your preset
+            tags: ['profile'],
+        };
+        
+        openUploadWidget(options, (error, result) => {
+            if (result.event === 'success') {
+                setProfilePic(result.info.url);
+                // TODO: Send the profile picture details (URL, public_id) to the server to save
+            }
+        });
     };
 
     const handleDeleteProfilePic = () => {
         setProfilePic(null);
         // TODO: Send a request to the server to delete the profile picture
+        // On the server-side, use Cloudinary SDK to delete the image based on its public_id
     };
 
     return (
         <div className="profile-pic-container">
             <div className="profile-pic" style={{ backgroundImage: `url(${profilePic})` }}></div>
-            <input type="file" onChange={handleImageUpload} />
+            <button onClick={handleImageUpload}>Change Picture</button>
             <button onClick={handleDeleteProfilePic}>Delete Profile Picture</button>
         </div>
     );
