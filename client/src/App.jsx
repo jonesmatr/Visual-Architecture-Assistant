@@ -9,7 +9,8 @@ import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
-import Auth from './utils/auth';
+import FrontPage from './pages/FrontPage';
+import Innovation from './pages/Innovation';
 
 
 const authLink = setContext((_, { headers }) => {
@@ -57,6 +58,9 @@ function App() {
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/portfolio" element={<ProtectedPortfolioRoute />} />  {/* Use the ProtectedPortfolioRoute component here */}
+          <Route path="/HomePage" element={<FrontPage />} />
+          <Route path="/innovation" element={<Innovation />} />
+          {/* <Route path="/portfolio" element={<Portfolio />} /> */}
           <Route path="/About" element={<About />} />
           {/* Add other routes as needed */}
         </Routes>

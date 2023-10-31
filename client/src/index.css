@@ -172,8 +172,6 @@ button:focus-visible {
   }
 }
 
-
-
 /*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*/
 
 body, html {
@@ -309,7 +307,7 @@ body, html {
 
 #aboutCarousel .carousel-item img {
   width: 100%;
-  max-width: 500px; /* Adjust as needed */
+  max-width: 500px; 
   object-fit: cover;
   margin-left: 12%; /* Move the image 10% to the left */
   display: block;
@@ -335,13 +333,285 @@ body, html {
 }
 
 .title {
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px; 
 }
 
 .profile-image {
-  width: 150px; /* Adjust as needed */
-  height: 150px; /* Adjust as needed */
+  width: 150px; 
+  height: 150px; 
   border-radius: 50%; /* Makes the image circular */
   object-fit: cover; /* Ensures the image covers the entire space without distortion */
+}
+
+/* FRONT PAGE */ /* FRONT PAGE */ /* FRONT PAGE */ /* FRONT PAGE */
+
+.banner {
+  background-color: rgba(138, 138, 138, 0.5); /* 50% transparent gray */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 0;
+  flex-direction: row;
+}
+
+.static-image {
+  width: 45%;
+  margin-left: 10%;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 35%; 
+}
+
+.image-grid img {
+  width: 100%; /* This ensures the images take the full width of their grid cell */
+  max-width: 150px; /* Adjust this to control the maximum width of the images */
+  height: auto; /* This maintains the aspect ratio */
+}
+
+.description {
+  padding-left: 5%;
+  text-align: left;
+  max-width: 60%;
+  padding-top: 3%;
+}
+
+.description h1 {
+  font-size: 2.5em; 
+  font-weight: bold;
+  color: #333; 
+  margin-bottom: 20px; /* Space below the h1 */
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+.description h4 {
+  font-size: 1em; 
+  font-weight: bold;
+  color: #555; /* Adjust color as needed */
+  margin-top: 30px; /* Space above the h2 */
+  margin-bottom: 15px; /* Space below the h2 */
+}
+
+.description p {
+  font-size: 1em;
+  color: #777; 
+  line-height: 1.5; 
+  margin-bottom: 20px; /* Space below each paragraph */
+}
+
+.banner-description h4 {
+ font-size: 33px;
+ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ font-weight: 400;
+ padding-bottom: 22px;
+}
+
+.banner-description p {
+  max-width: 400px;  /* This sets a maximum width for the paragraph. Adjust as needed */
+  text-align: justify;  /* This makes the text align to both the left and right margins, giving it a uniform appearance */
+  margin-left: auto;  /* These two lines center the paragraph within its parent */
+  margin-right: auto; 
+  font-size: 23px;
+}
+
+.main-heading::after {
+  content: ""; /* This is necessary for the pseudo-element to work */
+  display: block; /* Makes it a block-level element */
+  width: 90px; /* Adjust to match the width of "Welc" */
+  height: 2px; /* Adjust for desired thickness of the line */
+  background-color: #333; /* Adjust for desired color of the line */
+  margin: 30px 0; /* Adds some space above and below the line */
+}
+
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* This ensures that the components align at the top */
+  padding: 20px 0; /* Add some vertical padding */
+  flex-direction: row
+}
+
+.description {
+  flex: 1; /* This will allow the description to take up the remaining space */
+  padding-right: 20px; /* Add some padding to the right of the description */
+}
+
+.contractors-categories .card {
+  border: none;
+  box-shadow: none;
+  margin-right: 53px;
+}
+
+.contractors-categories {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* This will ensure everything aligns to the left */
+  width: 550px; /* or whatever width you find appropriate */
+  overflow-y: auto; /* allows for vertical scrolling if the content overflows */
+  max-height: 700px; /* adjust as needed to limit how tall this section can grow */
+}
+
+.contractors-categories .card-header {
+  font-weight: bold;
+  background-color: #dccbb1;
+}
+
+.contractors-categories .category-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 1rem; /* Same padding as the card-header */
+  transition: background-color 0.3s;
+}
+
+
+.contractors-categories .category-item:hover {
+  background-color: #e8d997;
+}
+
+
+.category-item p {
+  margin-left: auto;  
+  padding-left: 33px;
+}
+
+.expand-icon {
+  margin-right: 1rem; /* Spacing between + icon and text */
+  font-size: 1.5rem; /* Make + icon slightly bigger */
+}
+
+.dark-yellow {
+  background-color: #DAA520;
+}
+
+.white {
+  background-color: #FFFFFF;
+}
+
+.light-yellow {
+  background-color: #f2eee6;
+}
+
+.left-section {
+  display: flex;
+  align-items: center; /* Vertically centers the content */
+  justify-content: space-between; /* Distributes space between children */
+  flex-direction: row; /* Lays out children horizontally */
+  gap: 20px; /* Adds some space between the image and the text */
+  width: 60%; /* Adjust as needed to control the width of the left section */
+}
+
+.banner-description {
+  flex: 1; /* Takes up the remaining space */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners */
+  color: #1a1a1a !important;
+}
+
+.find-out-more-btn {
+  padding: 10px 20px;
+  background-color: #007BFF; /* Change to your preferred color */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  /* Optional: Add hover effect */
+  &:hover {
+      background-color: #0056b3; /* Darker shade for hover effect */
+  }
+}
+
+/*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ 
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 160px);
+  gap: 16px;
+  grid-auto-rows: 150px; 
+}
+
+.image-container {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(231, 225, 225, 0.6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-image {
+  width: 450px !important;
+  height: 250px !important;
+}
+
+/*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ 
+
+.innovation-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* This creates a 5x5 grid */
+  gap: 16px;
+}
+
+.innovation-container img {
+  width: 100%;
+  height: 230px; /* Set a fixed height */
+  object-fit: cover; /* This will ensure images cover the entire space without distortion */
+  display: block;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden; /* This will hide parts of the image that exceed the container's boundaries */
+  height: 150px; /* Set a fixed height for the container */
+}
+
+.innovation-container .image-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the image within the container */
+}
+
+#aboutCarousel .carousel-inner .carousel-item .innovation-banner-image-col .carousel-portimage {
+  width: 14% !important;
+  height: auto !important;
+  display: flex;
+  margin: 3 auto;
+  margin-left: 70%;
+}
+
+.innovation-carousel-caption .innovation-carousel-title {
+  font-size: 54px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #575757;
+  margin-top: 40px;
+  margin-left: 90px;
+}
+
+.innovation-carousel-caption .innovation-carousel-description {
+  font-size: 26px;
+  margin-left: 95px;
+  margin-top: 40px;
+  color: #cccccc;
+}
+
+/* If you want to adjust the position of the entire caption */
+.innovation-carousel-caption {
+  bottom: 20%;
+  left: 10%;
+  right: 10%;
+  text-align: left;
 }
 
