@@ -3,37 +3,24 @@ import Layout from '../components/Layout';
 import "../index.css";
 
 // Carousel Component
-const Carousel = () => {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const ImageGrid = () => {
     const images = [
+        '/portrait-10.png',
+        '/portrait-6.png',
+        '/portrait-9.png',
+        '/portrait-5.png',
+        '/portrait-7.png',
+        '/portrait-4.png',
+        '/portrait-8.png',
         '/portrait-1.png',
         '/portrait-2.png',
-        '/portrait-3.png',
-        '/portrait-4.png',
-        '/portrait-5.png',
-        '/portrait-6.png',
-        '/portrait-7.png',
         
-        // ... Add all 7 images' paths here ...
     ];
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000); // Change image every 5 seconds
-
-        return () => clearInterval(interval); // Cleanup on component unmount
-    }, []);
-
     return (
-        <div className="carousel">
+        <div className="image-grid">
             {images.map((imgSrc, index) => (
-                <img 
-                    key={index} 
-                    src={imgSrc} 
-                    alt={`Image ${index + 1}`} 
-                    style={{display: index === currentImageIndex ? 'block' : 'none'}} 
-                />
+                <img key={index} src={imgSrc} alt={`Image ${index + 1}`} />
             ))}
         </div>
     );
@@ -73,15 +60,18 @@ const ContractorsCategories = () => {
 const HomePage = () => {
     return (
         <Layout>
-    <div className="home-page">
-        <Carousel />
-        <div className="main-section">
-            <Description />
-            <ContractorsCategories />
-        </div>
-    </div>
-    </Layout>
-);
-    };
+            <div className="home-page">
+                <div className="banner">
+                <img className="static-image" src="/portrait-3.png" alt="Static Image" />
+                    <ImageGrid />
+                </div>
+                <div className="main-section">
+                    <Description />
+                    <ContractorsCategories />
+                </div>
+            </div>
+        </Layout>
+    );
+};
 
 export default HomePage;

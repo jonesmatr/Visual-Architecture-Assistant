@@ -347,17 +347,34 @@ body, html {
 
 /* FRONT PAGE */ /* FRONT PAGE */ /* FRONT PAGE */ /* FRONT PAGE */
 
-.carousel img {
-  width: 25%;  
-  height: auto;
-  display: none;
-}
-
-.main-section {
+.banner {
+  background-color: #f5f5f5;
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  align-items: center;
+  padding: 70px 0;
 }
+
+.static-image {
+  width: 20%;
+  height: 20%;
+  margin-left: 10%;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 35%; /* Adjusted width */
+}
+
+.image-grid img {
+  width: 100%; /* This ensures the images take the full width of their grid cell */
+  max-width: 130px; /* Adjust this to control the maximum width of the images */
+  height: auto; /* This maintains the aspect ratio */
+}
+
+/* ... rest of your CSS ... */
 
 .description {
   flex: 1;
@@ -375,8 +392,4 @@ body, html {
 
 .contractors-categories li {
   margin-bottom: 10px; /* adjust as needed */
-}
-
-.carousel {
-  background: linear-gradient(to right, #edecec, #e9e6e5); /* Example gradient */
 }
