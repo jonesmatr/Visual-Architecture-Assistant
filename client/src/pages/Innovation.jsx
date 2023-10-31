@@ -72,7 +72,6 @@ const Innovation = () => {
                 </div>
             </div>
 
-            {/* Slide 2 */}
              {/* Slide 2 */}
     <div className="carousel-item">
       <div className="row">
@@ -83,7 +82,7 @@ const Innovation = () => {
           </div>
         </div>
                     <div className="innovation-banner-image-col">
-                        <img src="/portrait-5.png" alt="Project Design" className="carousel-portimage" />
+                        <img src="/portrait-6.png" alt="Project Design" className="carousel-portimage" />
                     </div>
                 </div>
             </div>

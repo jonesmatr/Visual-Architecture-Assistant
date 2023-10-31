@@ -583,14 +583,27 @@ body, html {
   left: 50%;
   transform: translate(-50%, -50%); /* Center the image within the container */
 }
+#aboutCarousel .carousel-inner .carousel-item .row {
+  display: flex;
+  align-items: flex-start; /* This will align the content to the top of the flex container */
+}
+
+/* Adjust the image column styles */
+#aboutCarousel .carousel-inner .carousel-item .innovation-banner-image-col {
+  display: flex;
+}
 
 #aboutCarousel .carousel-inner .carousel-item .innovation-banner-image-col .carousel-portimage {
   width: 14% !important;
-  height: auto !important;
-  display: flex;
-  margin: 3 auto;
-  margin-left: 70%;
 }
+
+#aboutCarousel .carousel-inner .carousel-item .innovation-banner-image-col .carousel-portimage {
+  width: 22% !important;
+  position: relative;  /* Make the position relative so we can adjust with the top property */
+  top: -190px;  /* Adjust this value to move the image up as much as you want */
+  left: 50%;
+}
+
 
 .innovation-carousel-caption .innovation-carousel-title {
   font-size: 54px;
