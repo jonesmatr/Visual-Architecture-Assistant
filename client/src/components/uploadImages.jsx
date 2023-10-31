@@ -5,11 +5,12 @@ import auth from "../utils/auth";
 import { ADD_IMAGE, DELETE_IMAGE } from "../utils/mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_IMAGES } from "../utils/queries";
+import { Card, Button } from "react-bootstrap";
 
 function UploadImages() {
   const [images, setImages] = useState([]);
 
-  const {loading, error, data} = useQuery(GET_IMAGES);
+  const { loading, error, data } = useQuery(GET_IMAGES);
   const [addImage] = useMutation(ADD_IMAGE);
   const [deleteImage] = useMutation(DELETE_IMAGE);
 
@@ -101,27 +102,33 @@ function UploadImages() {
     if (data) {
       setImages(data.images);
     }
-    
   }, [data]);
   console.log("Images:", images);
   return (
     <CloudinaryContext cloudName="dbindi09a">
       <div className="App">
         <button onClick={() => beginUpload("image")}>Upload Image</button>
-        <section>
-          {images.map((image) => (
-            <div key={image.imageUrl}>
-              <Image
-                publicId={image.imageUrl}
-                fetch-format="auto"
-                quality="auto"
-              />
-              <button onClick={() => handleDelete(image._id)}>
-                Delete Image
-              </button>
-            </div>
-          ))}
-        </section>
+
+        {images.map((image) => (
+  <Card key={image._id} style={{ width: "18rem" }}>
+    <Image
+      cloudName="dbindi09a"
+      publicId={image.imageUrl} // Make sure this is the correct public ID
+      fetch-format="auto"
+      quality="auto"
+    />
+    <Card.Body>
+      <Card.Title>Card Title</Card.Title>
+      <Card.Text>
+        Some quick example text to build on the card title and make up the bulk of the card's content.
+      </Card.Text>
+      <Button onClick={() => handleDelete(image._id)} variant="primary">
+        Delete Image
+      </Button>
+    </Card.Body>
+  </Card>
+))}
+
       </div>
     </CloudinaryContext>
   );
