@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import "../index.css";
 
@@ -66,27 +67,59 @@ const BannerDescription = () => (
 );
 
 // ContractorsCategories Component
+const Categories = [
+    { title: 'NEW CONTRACTORS', count: 5, color: 'light-yellow', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'RENOVATION EXPERTS', count: 7, color: 'white', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'LANDSCAPE ARTISTS', count: 4, color: 'light-yellow', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'MASONRY SPECIALISTS', count: 6, color: 'white', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'ELECTRICIANS', count: 8, color: 'light-yellow', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'PLUMBERS', count: 3, color: 'white', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'CARPENTERS', count: 9, color: 'light-yellow', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'PAINTERS', count: 10, color: 'white', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'ELECTRICIANS', count: 5, color: 'light-yellow', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'BRICKLAYERS', count: 6, color: 'white', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'TILERS', count: 4, color: 'light-yellow', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'ROOFERS', count: 8, color: 'white', description: 'Newly registered contractors.', link: '/new-contractors' },
+    { title: 'LANDSCAPERS', count: 7, color: 'light-yellow', description: 'Newly registered contractors.', link: '/new-contractors' },
+
+];
+
 const ContractorsCategories = () => {
-    const categories = [
-        { title: 'NEW CONTRACTORS', count: 5 },
-        // ... Add the rest of the categories here ...
-    ];
+    const [expandedCategory, setExpandedCategory] = useState(null);
 
     return (
         <div className="contractors-categories">
-            <h3>CONTRACTORS CATEGORIES</h3>
-            <ul>
-                {categories.map((category, index) => (
-                    <li key={index}>
-                        <strong>{category.title}</strong> <span>{category.count} Contractors Available</span>
-                    </li>
-                ))}
-            </ul>
+            <div className="card">
+                <h3 className="card-header">CONTRACTORS CATEGORIES</h3>
+                <div className="card-body">
+                    {Categories.map((category, index) => (
+                        <div 
+                            key={index} 
+                            className={`category-item ${category.color}`} 
+                            onClick={() => {
+                                setExpandedCategory(
+                                    expandedCategory === index ? null : index
+                                );
+                            }}
+                        >
+                            <span className="expand-icon">{expandedCategory === index ? '-' : '+'}</span>
+                            {category.title}
+                            {expandedCategory === index && (
+                                <div>
+                                    <p>{category.count} Contractors Available</p>
+                                    <p>{category.description}</p>
+                    
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
 
-// HomePage Component// HomePage Component
+
 const HomePage = () => {
     return (
         <Layout>

@@ -411,18 +411,73 @@ body, html {
   margin: 30px 0; /* Adds some space above and below the line */
 }
 
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* This ensures that the components align at the top */
+  padding: 20px 0; /* Add some vertical padding */
+  flex-direction: row
+}
+
+.description {
+  flex: 1; /* This will allow the description to take up the remaining space */
+  padding-right: 20px; /* Add some padding to the right of the description */
+}
+
+.contractors-categories .card {
+  border: none;
+  box-shadow: none;
+  margin-right: 53px;
+}
 
 .contractors-categories {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* This will ensure everything aligns to the left */
+  width: 550px; /* or whatever width you find appropriate */
+  overflow-y: auto; /* allows for vertical scrolling if the content overflows */
+  max-height: 700px; /* adjust as needed to limit how tall this section can grow */
 }
 
-.contractors-categories ul {
-  list-style-type: none;
-  padding: 0;
+.contractors-categories .card-header {
+  font-weight: bold;
+  background-color: #dccbb1;
 }
 
-.contractors-categories li {
-  margin-bottom: 10px; 
+.contractors-categories .category-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 1rem; /* Same padding as the card-header */
+  transition: background-color 0.3s;
+}
+
+
+.contractors-categories .category-item:hover {
+  background-color: #e8d997;
+}
+
+
+.category-item p {
+  margin-left: auto;  
+  padding-left: 33px;
+}
+
+.expand-icon {
+  margin-right: 1rem; /* Spacing between + icon and text */
+  font-size: 1.5rem; /* Make + icon slightly bigger */
+}
+
+.dark-yellow {
+  background-color: #DAA520;
+}
+
+.white {
+  background-color: #FFFFFF;
+}
+
+.light-yellow {
+  background-color: #f2eee6;
 }
 
 .left-section {
