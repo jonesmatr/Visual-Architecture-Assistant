@@ -345,3 +345,38 @@ body, html {
   object-fit: cover; /* Ensures the image covers the entire space without distortion */
 }
 
+/* FRONT PAGE */ /* FRONT PAGE */ /* FRONT PAGE */ /* FRONT PAGE */
+
+.carousel img {
+  width: 25%;  
+  height: auto;
+  display: none;
+}
+
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.description {
+  flex: 1;
+  padding-right: 20px; /* adjust as needed */
+}
+
+.contractors-categories {
+  flex: 1;
+}
+
+.contractors-categories ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contractors-categories li {
+  margin-bottom: 10px; /* adjust as needed */
+}
+
+.carousel {
+  background: linear-gradient(to right, #edecec, #e9e6e5); /* Example gradient */
+}

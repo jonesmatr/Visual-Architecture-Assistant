@@ -6,8 +6,14 @@ import "../index.css";
 const Carousel = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const images = [
-        'path_to_your_image1.jpg',
-        'path_to_your_image2.jpg',
+        '/portrait-1.png',
+        '/portrait-2.png',
+        '/portrait-3.png',
+        '/portrait-4.png',
+        '/portrait-5.png',
+        '/portrait-6.png',
+        '/portrait-7.png',
+        
         // ... Add all 7 images' paths here ...
     ];
 
