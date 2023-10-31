@@ -111,7 +111,7 @@ const About = () => {
         {/* Team Member 4 */}
         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div className="box-part text-center">
-                <i className="fa fa-user fa-3x" aria-hidden="true"></i>
+            <img src="/self-image-JB.png" alt="Jamie's Profile" className="profile-image" />
                 <div className="title">
                     <h4>Jamie Branch</h4>
                 </div>

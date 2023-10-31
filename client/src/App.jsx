@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
-
+import FrontPage from './pages/FrontPage';
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
@@ -39,6 +39,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/HomePage" element={<FrontPage />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/About" element={<About />} />
           {/* Add other routes as needed */}
