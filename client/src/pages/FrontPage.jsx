@@ -64,7 +64,9 @@ const ContractorsCategories = () => {
 };
 
 // HomePage Component
-const HomePage = () => (
+const HomePage = () => {
+    return (
+        <Layout>
     <div className="home-page">
         <Carousel />
         <div className="main-section">
@@ -72,6 +74,8 @@ const HomePage = () => (
             <ContractorsCategories />
         </div>
     </div>
+    </Layout>
 );
+    };
 
 export default HomePage;
