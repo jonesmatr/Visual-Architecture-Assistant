@@ -83,7 +83,7 @@ const About = () => {
         {/* Team Member 2 */}
         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div className="box-part text-center">
-                <i className="fa fa-user fa-3x" aria-hidden="true"></i>
+            <img src="/self-image-MJ.jpg" alt="Matthew's Profile" className="profile-image" />
                 <div className="title">
                     <h4>Matthew Jones</h4>
                 </div>
