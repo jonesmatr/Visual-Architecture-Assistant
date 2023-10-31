@@ -526,11 +526,12 @@ body, html {
   }
 }
 
-/*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/
+/*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ 
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 160px);
   gap: 16px;
+  grid-auto-rows: 150px; 
 }
 
 .image-container {
@@ -541,20 +542,53 @@ body, html {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: rgba(255, 0, 0, 0.6);
+  background-color: rgba(231, 225, 225, 0.6);
   color: #fff;
   border: none;
   cursor: pointer;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .portfolio-image {
+  width: 450px !important;
+  height: 250px !important;
+}
+
+/*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ /*INNOVTION*/ 
+
+.innovation-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* This creates a 5x5 grid */
+  gap: 16px;
+}
+
+.innovation-container img {
   width: 100%;
-  height: auto;
+  height: 230px; /* Set a fixed height */
+  object-fit: cover; /* This will ensure images cover the entire space without distortion */
   display: block;
 }
+
+.image-container {
+  position: relative;
+  overflow: hidden; /* This will hide parts of the image that exceed the container's boundaries */
+  height: 150px; /* Set a fixed height for the container */
+}
+
+.innovation-container .image-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the image within the container */
+}
+
+#aboutCarousel .carousel-inner .carousel-item .innovation-banner-image-col .carousel-portimage {
+  width: 14% !important;
+  height: auto !important;
+  display: flex;
+  margin: 3 auto;
+  margin-left: 70%;
+}
+

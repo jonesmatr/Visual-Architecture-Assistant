@@ -115,11 +115,15 @@ function UploadImages() {
                 Delete
               </button>
               <Image
-                publicId={image.imageUrl}
-                fetch-format="auto"
-                quality="auto"
-                className="portfolio-image"
-              />
+                 publicId={image.imageUrl}
+                  fetch-format="auto"
+                    quality="auto"
+                      className="portfolio-image"
+                        width="450"  // Explicitly set width
+                          height="550" // Explicitly set height
+                            crop="scale"  // This ensures the image covers the entire space without distortion
+/>
+
             </div>
           ))}
         </div>
