@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
+import Auth from './utils/auth';
 
 
 const authLink = setContext((_, { headers }) => {
@@ -30,6 +31,17 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+function ProtectedPortfolioRoute() {
+  const navigate = useNavigate();
+
+  if (Auth.loggedIn()) {
+    return <Portfolio />;
+  } else {
+    navigate('/signup');
+    return null;
+  }
+}
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -39,7 +51,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio" element={<ProtectedPortfolioRoute />} />  {/* Use the ProtectedPortfolioRoute component here */}
           <Route path="/About" element={<About />} />
           {/* Add other routes as needed */}
         </Routes>

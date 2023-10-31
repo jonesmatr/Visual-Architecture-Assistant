@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Bio({ initialBio }) {
     const [bio, setBio] = useState(initialBio);
     const [isEditing, setIsEditing] = useState(false);
+
+    useEffect(() => {
+        // Retrieve from local storage on component mount
+        const savedBio = localStorage.getItem('userBio');
+        if (savedBio) {
+            setBio(savedBio);
+        }
+    }, []);
+
+    useEffect(() => {
+        // Save bio to local storage whenever it changes
+        localStorage.setItem('userBio', bio);
+    }, [bio]);
 
     const handleEditClick = () => {
         setIsEditing(true);

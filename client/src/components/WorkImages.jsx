@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { openUploadWidget } from '../CloudinaryService';
 
 function WorkImages({ initialImages }) {
     const [images, setImages] = useState(initialImages);
 
+    useEffect(() => {
+        // Retrieve from local storage on component mount
+        const savedImages = JSON.parse(localStorage.getItem('workImages'));
+        if (savedImages && savedImages.length > 0) {
+            setImages(savedImages);
+        }
+    }, []);
+
+    useEffect(() => {
+        // Save images to local storage whenever they change
+        localStorage.setItem('workImages', JSON.stringify(images));
+    }, [images]);
+
     const handleImageUpload = () => {
         const options = {
             cloudName: 'dbindi09a',
-            uploadPreset: 'new4new', // Replace with your preset
+            uploadPreset: 'new4new',
             tags: ['portfolio'], 
         };
         
