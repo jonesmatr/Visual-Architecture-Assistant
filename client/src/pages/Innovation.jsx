@@ -53,68 +53,67 @@ const Innovation = () => {
   </div>
 </div>
 
-
-
-      {/* Slide 1 */}
- {/* Banner Section (similar to About page) */}
- <div id="aboutCarousel" className="carousel slide mt-2" data-ride="carousel">
+ {/* Slide 1 */}
+    {/* Banner Section (similar to About page) */}
+  <div id="aboutCarousel" className="carousel slide mt-2" data-ride="carousel">
   <div className="carousel-inner">
     {/* Slide 1 */}
     <div className="carousel-item active">
       <div className="row">
         <div className="col-md-6 d-flex align-items-center">
-          <div className="carousel-caption text-left">
-            <h3>Innovative Design Solutions</h3>
-            <p>At Visual Architecture Assistant, we transform your ideas into reality. Our team of dedicated professionals is committed to delivering designs that captivate and inspire.</p>
+          <div className="innovation-carousel-caption text-left">
+            <h3 className="innovation-carousel-title">Innovative Design Solutions</h3>
+            <p className="innovation-carousel-description">At Visual Architecture Assistant, we transform your ideas into reality. Our team of dedicated professionals is committed to delivering designs that captivate and inspire.</p>
           </div>
         </div>
-        <div className="innovation-banner-image-col">
-          <img src="/portrait-1.png" alt="Company Office" className="carousel-portimage" />
+                    <div className="innovation-banner-image-col">
+                        <img src="/portrait-1.png" alt="Company Office" className="carousel-portimage" />
+                    </div>
+                </div>
+            </div>
+
+            {/* Slide 2 */}
+             {/* Slide 2 */}
+    <div className="carousel-item">
+      <div className="row">
+        <div className="col-md-6 d-flex align-items-center">
+          <div className="innovation-carousel-caption text-left">
+            <h3 className="innovation-carousel-title">Craftsmanship Meets Technology</h3>
+            <p className="innovation-carousel-description">Leveraging the latest technology, we ensure that every project stands out. Our attention to detail and commitment to excellence is evident in every design.</p>
+          </div>
         </div>
-      </div>
-    </div>
+                    <div className="innovation-banner-image-col">
+                        <img src="/portrait-5.png" alt="Project Design" className="carousel-portimage" />
+                    </div>
+                </div>
+            </div>
 
-  {/* Slide 2 */}
-  <div className="carousel-item">
-        <div className="row">
-          <div className="col-md-6 d-flex align-items-center">
-               <div className="carousel-caption text-left">
-                  <h3>Craftsmanship Meets Technology</h3>
-                 <p>Leveraging the latest technology, we ensure that every project stands out. Our attention to detail and commitment to excellence is evident in every design.</p>
-             </div>
-         </div>
-         <div className="innovation-banner-image-col">
-      <img src="/portrait-5.png" alt="Project Design" className="carousel-portimage" />
-    </div>
-  </div>
-</div>
+            {/* Slide 3 */}
+            <div className="carousel-item">
+      <div className="row">
+        <div className="col-md-6 d-flex align-items-center">
+          <div className="innovation-carousel-caption text-left">
+            <h3 className="innovation-carousel-title">Collaborative Approach</h3>
+            <p className="innovation-carousel-description">We believe in collaboration. Working closely with our clients, we ensure that every design not only meets but exceeds expectations. Your vision is our mission.</p>
+          </div>
+        </div>
+                    <div className="innovation-banner-image-col">
+                        <img src="/portrait-8.png" alt="Client Meeting" className="carousel-portimage" />
+                    </div>
+                </div>
+            </div>
+        </div>
 
-         {/* Slide 3 */}
-<div className="carousel-item">
-  <div className="row">
-    <div className="col-md-6 d-flex align-items-center">
-      <div className="carousel-caption text-left">
-        <h3>Collaborative Approach</h3>
-        <p>We believe in collaboration. Working closely with our clients, we ensure that every design not only meets but exceeds expectations. Your vision is our mission.</p>
-      </div>
+        {/* Carousel Controls */}
+        <a className="carousel-control-prev" href="#aboutCarousel" role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+        </a>
+        <a className="carousel-control-next" href="#aboutCarousel" role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+        </a>
     </div>
-    <div className="innovation-banner-image-col">
-      <img src="/portrait-8.png" alt="Client Meeting" className="carousel-portimage" />
-    </div>
-  </div>
-</div>
-  </div>
-
-  {/* Carousel Controls */}
-  <a className="carousel-control-prev" href="#aboutCarousel" role="button" data-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span className="sr-only">Previous</span>
-  </a>
-  <a className="carousel-control-next" href="#aboutCarousel" role="button" data-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-    <span className="sr-only">Next</span>
-  </a>
-</div>
     </Layout>
   );
 }
