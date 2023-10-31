@@ -11,6 +11,7 @@ import Portfolio from './pages/Portfolio';
 import About from './pages/About';
 import FrontPage from './pages/FrontPage';
 import Innovation from './pages/Innovation';
+import Auth from './utils/auth';
 
 
 const authLink = setContext((_, { headers }) => {
@@ -60,7 +61,7 @@ function App() {
           <Route path="/portfolio" element={<ProtectedPortfolioRoute />} />  {/* Use the ProtectedPortfolioRoute component here */}
           <Route path="/HomePage" element={<FrontPage />} />
           <Route path="/innovation" element={<Innovation />} />
-          {/* <Route path="/portfolio" element={<Portfolio />} /> */}
+          <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/About" element={<About />} />
           {/* Add other routes as needed */}
         </Routes>
