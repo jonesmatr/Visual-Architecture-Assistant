@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { openUploadWidget } from './CloudinaryService';
+import { openUploadWidget } from '../CloudinaryService';
 
 function WorkImages({ initialImages }) {
     const [images, setImages] = useState(initialImages);

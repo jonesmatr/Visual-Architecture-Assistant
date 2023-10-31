@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { openUploadWidget } from './CloudinaryService';
+import { openUploadWidget } from '../CloudinaryService';
 
 function ProfilePicture({ initialProfilePic }) {
     const [profilePic, setProfilePic] = useState(initialProfilePic);
@@ -7,7 +7,7 @@ function ProfilePicture({ initialProfilePic }) {
     const handleImageUpload = () => {
         const options = {
             cloudName: 'dbindi09a',
-            uploadPreset: 'YOUR_UPLOAD_PRESET', // Replace with your preset
+            uploadPreset: 'new4new', // Replace with your preset
             tags: ['profile'],
         };
         
