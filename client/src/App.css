@@ -27,3 +27,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.profile-pic-container {
+  position: relative;
+  width: 150px; /* Adjust as needed */
+}
+
+.profile-pic {
+  width: 100%;
+  padding-top: 100%; /* This gives a 1:1 aspect ratio */
+  border-radius: 50%; /* Makes it circular */
+  background-size: cover;
+  background-position: center;
+}
