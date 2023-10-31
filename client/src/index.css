@@ -525,3 +525,36 @@ body, html {
       background-color: #0056b3; /* Darker shade for hover effect */
   }
 }
+
+/*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/ /*Portfolio-image*/
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
