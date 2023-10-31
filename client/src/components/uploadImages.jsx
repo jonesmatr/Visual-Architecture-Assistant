@@ -108,20 +108,21 @@ function UploadImages() {
     <CloudinaryContext cloudName="dbindi09a">
       <div className="App">
         <button onClick={() => beginUpload("image")}>Upload Image</button>
-        <section>
+        <div className="image-grid">
           {images.map((image) => (
-            <div key={image.imageUrl}>
+            <div key={image.imageUrl} className="image-container">
+              <button className="delete-button" onClick={() => handleDelete(image._id)}>
+                Delete
+              </button>
               <Image
                 publicId={image.imageUrl}
                 fetch-format="auto"
                 quality="auto"
+                className="portfolio-image"
               />
-              <button onClick={() => handleDelete(image._id)}>
-                Delete Image
-              </button>
             </div>
           ))}
-        </section>
+        </div>
       </div>
     </CloudinaryContext>
   );
