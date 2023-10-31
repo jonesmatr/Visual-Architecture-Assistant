@@ -61,10 +61,11 @@ const Description = () => (
 
 const BannerDescription = () => (
     <div className="banner-description">
-        <h4>YOUR BANNER TEXT HERE</h4>
-        <p>Additional description or details can go here.</p>
+        <h4>MEET OUR TRUSTED CONTRACTORS</h4>
+        <p>At Visual Architeture Assistant, we pride ourselves on showcasing the finest and most reliable contractors in the industry. Each professional in our showcase has undergone a rigorous selection process, ensuring that you receive top-quality service every time. Explore their profiles, discover their expertise, and build with confidence.</p>
     </div>
 );
+
 
 // ContractorsCategories Component
 const Categories = [

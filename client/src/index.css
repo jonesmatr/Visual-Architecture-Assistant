@@ -402,6 +402,21 @@ body, html {
   margin-bottom: 20px; /* Space below each paragraph */
 }
 
+.banner-description h4 {
+ font-size: 33px;
+ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ font-weight: 400;
+ padding-bottom: 22px;
+}
+
+.banner-description p {
+  max-width: 400px;  /* This sets a maximum width for the paragraph. Adjust as needed */
+  text-align: justify;  /* This makes the text align to both the left and right margins, giving it a uniform appearance */
+  margin-left: auto;  /* These two lines center the paragraph within its parent */
+  margin-right: auto; 
+  font-size: 23px;
+}
+
 .main-heading::after {
   content: ""; /* This is necessary for the pseudo-element to work */
   display: block; /* Makes it a block-level element */
