@@ -600,8 +600,13 @@ body, html {
 #aboutCarousel .carousel-inner .carousel-item .innovation-banner-image-col .carousel-portimage {
   width: 22% !important;
   position: relative;  /* Make the position relative so we can adjust with the top property */
-  top: -190px;  /* Adjust this value to move the image up as much as you want */
+  top: -250px;  /* Adjust this value to move the image up as much as you want */
   left: 50%;
+}
+
+#aboutCarousel .carousel-inner .carousel-item:nth-child(2) .innovation-banner-image-col .carousel-portimage {
+  position: relative;
+  top: -320px;  /* Adjust this value to move the image up or down as needed */
 }
 
 
