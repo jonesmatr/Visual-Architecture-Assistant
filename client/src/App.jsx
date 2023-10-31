@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
+import Contact from './pages/Contact';
 
 
 const authLink = setContext((_, { headers }) => {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/About" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
           {/* Add other routes as needed */}
         </Routes>
       </Router>

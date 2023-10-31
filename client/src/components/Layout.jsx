@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
                 <Nav className="login-signup-nav">
                 <Nav.Link href="login" className="small-nav-link">Login</Nav.Link>
                  <Nav.Link href="signup" className="small-nav-link">Signup</Nav.Link>
+                 <Nav.Link href="contact" className="small-nav-link">Contact</Nav.Link>
                 </Nav>
 
             </Navbar>
