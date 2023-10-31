@@ -29,7 +29,10 @@
 }
 
 .profile-pic-container {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; position: relative;
   width: 150px; /* Adjust as needed */
 }
 
