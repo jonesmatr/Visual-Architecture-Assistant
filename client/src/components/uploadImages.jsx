@@ -113,7 +113,7 @@ function UploadImages() {
   <Card key={image._id} style={{ width: "18rem" }}>
     <Image
       cloudName="dbindi09a"
-      publicId={image.imageUrl} // Make sure this is the correct public ID
+      publicId={image.imageUrl} 
       fetch-format="auto"
       quality="auto"
     />
