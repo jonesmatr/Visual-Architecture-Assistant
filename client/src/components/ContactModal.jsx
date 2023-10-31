@@ -6,9 +6,9 @@ function ContactModal({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Thank You!</Modal.Title>
+        <Modal.Title>Thanks for reaching out! </Modal.Title>
       </Modal.Header>
-      <Modal.Body>Thanks for reaching out!  I will get back to you as soon as I can!</Modal.Body>
+      <Modal.Body>We will get back to you as soon as we can</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Close
