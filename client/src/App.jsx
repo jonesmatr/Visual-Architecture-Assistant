@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
@@ -34,10 +34,15 @@ const client = new ApolloClient({
 function ProtectedPortfolioRoute() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!Auth.loggedIn()) {
+      navigate('/signup');
+    }
+  }, [navigate]);
+
   if (Auth.loggedIn()) {
     return <Portfolio />;
   } else {
-    navigate('/signup');
     return null;
   }
 }
