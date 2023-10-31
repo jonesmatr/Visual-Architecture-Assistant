@@ -53,7 +53,7 @@ const Innovation = () => {
   </div>
 </div>
 
- {/* Slide 1 */}
+
     {/* Banner Section (similar to About page) */}
   <div id="aboutCarousel" className="carousel slide mt-2" data-ride="carousel">
   <div className="carousel-inner">
@@ -72,7 +72,6 @@ const Innovation = () => {
                 </div>
             </div>
 
-            {/* Slide 2 */}
              {/* Slide 2 */}
     <div className="carousel-item">
       <div className="row">
