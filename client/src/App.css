@@ -29,17 +29,18 @@
 }
 
 .profile-pic-container {
+  width: 100%; /* or set a fixed width if preferred */
+  height: 300px; /* example height; adjust as needed */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; position: relative;
-  width: 150px; /* Adjust as needed */
 }
 
 .profile-pic {
-  width: 100%;
-  padding-top: 100%; /* This gives a 1:1 aspect ratio */
-  border-radius: 50%; /* Makes it circular */
+  width: 150px; /* example width; adjust as needed */
+  height: 150px; /* example height; adjust as needed */
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
+  border-radius: 50%; /* to make it round */
 }
