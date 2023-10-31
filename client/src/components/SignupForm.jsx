@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 // import { createUser } from '../utils/API';
@@ -8,6 +9,7 @@ import { ADD_USER } from '../utils/mutations';
 import Layout from '../components/Layout';
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   // set state for form validation
@@ -25,28 +27,29 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+  
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+      return; // This will exit the function early if validation fails
     }
-
+  
     try {
-      
       const { data } = await addUser({
         variables: { ...userFormData }
       });
-
+  
       const token = data.addUser.token;
-     
-      Auth.login(token);
+      Auth.login(token, '/portfolio');
+      navigate('/portfolio');
+      return;  // Redirect to the portfolio page after successful signup
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
-
+  
     setUserFormData({
       username: '',
       email: '',
