@@ -23,9 +23,15 @@ html, body, #root {
   padding: 0;
   overflow: hidden; /* Optional: This prevents any unwanted scrollbars */
 }
-.custom-navbar .small-nav-link {
+.custom-navbar  {
   height: 100px; /* or whatever height NAV you prefer */
   position: relative; /*this and absolute will not make the About Portfolio ... move along with the logo*/
+}
+
+.small-nav-link {
+  position: flex;
+  justify-content: center;
+  margin-top: 6rem;
 }
 
 .navbar-logo {
