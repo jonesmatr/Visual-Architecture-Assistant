@@ -43,8 +43,7 @@ const SignupForm = () => {
   
       const token = data.addUser.token;
       Auth.login(token, '/portfolio');
-      navigate('/portfolio');
-      return;  // Redirect to the portfolio page after successful signup
+      navigate('/portfolio');      
     } catch (err) {
       console.error(err);
       setShowAlert(true);

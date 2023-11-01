@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
 import { openUploadWidget } from '../CloudinaryService';
+import { GET_USER_PROFILE } from '../utils/queries'; // Assuming this is correct
+import { UPDATE_PROFILE_PIC } from '../utils/mutations';
 
-function ProfilePicture({ initialProfilePic }) {
-    const [profilePic, setProfilePic] = useState(initialProfilePic);
 
+function ProfilePicture() {
+    const { data: userData, refetch } = useQuery(GET_USER_PROFILE);
+    const [updateProfilePic] = useMutation(UPDATE_PROFILE_PIC);
+    const [profilePic, setProfilePic] = useState('');
+
+    // Initialize profilePic state with data from the server
     useEffect(() => {
-        // Retrieve from local storage on component mount
-        const savedPic = localStorage.getItem('profilePic');
-        if (savedPic) {
-            setProfilePic(savedPic);
+        if (userData) {
+            setProfilePic(userData.userProfile.profilePic);
         }
-    }, []);
+    }, [userData]);
 
     const handleImageUpload = () => {
         const options = {
@@ -19,22 +24,24 @@ function ProfilePicture({ initialProfilePic }) {
             tags: ['profile'],
         };
         
-        openUploadWidget(options, (error, result) => {
+        openUploadWidget(options, async (error, result) => {
             if (result.event === 'success') {
                 setProfilePic(result.info.url);
-                // Save to local storage
-                localStorage.setItem('profilePic', result.info.url);
-                // TODO: Send the profile picture details (URL, public_id) to the server to save
+                // Update the profile picture in the database
+                await updateProfilePic({ variables: { imageUrl: result.info.url } });
+
+                // Refetch the user profile data from the server to update the cache
+                refetch();
             }
         });
-    };;
+    };    
 
-    const handleDeleteProfilePic = () => {
-        setProfilePic(null);
-        // Remove from local storage
-        localStorage.removeItem('profilePic');
-        // TODO: Send a request to the server to delete the profile picture
-        // On the server-side, use Cloudinary SDK to delete the image based on its public_id
+    const handleDeleteProfilePic = async () => {
+        // Update the database to remove the profile picture
+        await updateProfilePic({ variables: { imageUrl: '' } });
+
+        // Refetch the user profile data from the server to update the cache
+        refetch();
     };
 
     return (

@@ -49,4 +49,52 @@ export const GET_IMAGE_BY_ID = gql`
   }
 `;
 
-  
+export const GET_CONTRACTOR_DETAILS = gql`
+  query GetContractorDetails($contractorId: ID!) {
+    contractor: user(userId: $contractorId) {
+      _id
+      username
+      email
+      profilePic
+      bio
+      workImages {
+        _id
+        imageUrl
+        description
+      }
+    }
+  }
+`;
+
+export const GET_ALL_CONTRACTORS = gql`
+  query GetAllContractors {
+    contractors {
+      _id
+      username
+      email
+      profilePic
+      bio
+      workImages {
+        _id
+        imageUrl
+        description
+      }
+    }
+  }
+`;
+
+export const GET_USER_PROFILE = gql`
+  query GetUserProfile {
+    userProfile {
+      _id
+      username
+      email
+      profilePic
+      bio
+    }
+  }
+`;
+
+
+
+

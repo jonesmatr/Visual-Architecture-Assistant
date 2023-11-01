@@ -633,3 +633,61 @@ body, html {
   text-align: left;
 }
 
+.contractor-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  margin: 20px;
+  text-align: center;
+}
+
+.contractor-card img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.contractor-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.contractor-card p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.work-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.work-images div {
+  width: 100px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.work-images img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.contractors-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 20px 0;
+}

@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { openUploadWidget } from '../CloudinaryService';
+import { useMutation } from '@apollo/client';
+import { ADD_WORK_IMAGE, UPDATE_IMAGE_DESCRIPTION, DELETE_WORK_IMAGE } from '../utils/mutations';
 
 function WorkImages({ initialImages }) {
     const [images, setImages] = useState(initialImages);
+
+    const [addWorkImage] = useMutation(ADD_WORK_IMAGE);
+    const [updateImageDescription] = useMutation(UPDATE_IMAGE_DESCRIPTION);
+    const [deleteWorkImage] = useMutation(DELETE_WORK_IMAGE);
 
     useEffect(() => {
         // Retrieve from local storage on component mount
@@ -32,14 +38,14 @@ function WorkImages({ initialImages }) {
                     description: ""
                 };
                 setImages([...images, newImage]);
+                addWorkImage({ variables: { imageUrl: newImage.url, description: newImage.description } });
                 // TODO: Send the image details (URL, public_id, description) to the server to save
             }
         });
     };
 
     const handleDeleteImage = (imageId) => {
-        // TODO: Send a request to the server to delete the image
-        // The server should also handle deletion from Cloudinary using the imageId (public_id)
+        deleteWorkImage({ variables: { imageId } });
         const updatedImages = images.filter(image => image.id !== imageId);
         setImages(updatedImages);
     };
@@ -49,6 +55,7 @@ function WorkImages({ initialImages }) {
             image.id === imageId ? { ...image, description: newDescription } : image
         );
         setImages(updatedImages);
+        updateImageDescription({ variables: { imageId, description: newDescription } });
         // TODO: Send the updated description to the server
     };
 

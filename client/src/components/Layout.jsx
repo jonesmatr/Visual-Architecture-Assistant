@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
             {/* Navbar */}
             <Navbar bg="light" expand="lg" className="custom-navbar">
                 {/* Logo */}
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="/HomePage">
                     <img
                         src="/logo.png"  // Path to your logo
                         width="130"   // Adjust width as needed

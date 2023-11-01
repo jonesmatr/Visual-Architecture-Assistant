@@ -17,13 +17,26 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set savedImages to be an array of ObjectIds referencing the Image model
     savedImages: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Image'
       }
     ],
+    bio: {
+      type: String,
+      trim: true
+    },
+    workImages: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Image'
+      }
+    ],
+    profilePic: {   // This should be inside the main schema object
+      type: String,
+      trim: true
+    }
   },
   {
     toJSON: {
@@ -31,6 +44,7 @@ const userSchema = new Schema(
     },
   }
 );
+
 // hash user password
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {

@@ -25,9 +25,24 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
+    contractors: async () => {
+      // This is a placeholder. You might want to add filtering logic or other criteria
+      // to select only specific users as contractors, depending on your application's logic.
+      return User.find();
+  },
+  userProfile: async (_, __, context) => {
+    // Check if the user is authenticated
+    if (!context.user) {
+      throw new AuthenticationError('You must be logged in to view your profile.');
+    }
+
+    // Find the user by their ID (assumed to be in the context)
+    return await User.findById(context.user._id);
+  },
   },
 
   Mutation: {
+
     login: async (parent, args, context) => {
       const { email, password } = args;
       const user = await User.findOne({ email: email });
@@ -41,12 +56,49 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     addUser: async (_parent, args) => {
       console.log(args);
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
+
+    updateProfilePic: async (_, { imageUrl }, context) => {
+      if (!context.user) {
+          throw new AuthenticationError('You must be logged in to update your profile picture.');
+      }
+
+      const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { profilePic: imageUrl },
+          { new: true }
+      );
+
+      if (!updatedUser) {
+          throw new Error('Failed to update profile picture.');
+      }
+
+      return updatedUser;
+  },
+
+  updateBio: async (_, { bio }, context) => {
+    if (!context.user) {
+        throw new AuthenticationError('You must be logged in to update your bio.');
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+        context.user._id,
+        { bio: bio },
+        { new: true }
+    );
+
+    if (!updatedUser) {
+        throw new Error('Failed to update bio.');
+    }
+
+    return updatedUser;
+ },
 
     addImage: async (_, { imageUrl, description, tags }, context) => {
       try {
@@ -72,6 +124,7 @@ const resolvers = {
         throw new Error("Failed to upload image: " + error.message);
       }
     },
+
     deleteImage: async (_, { imageId }, context) => {
       try {
         // Check if the user is authenticated (you can add your authentication logic here)
