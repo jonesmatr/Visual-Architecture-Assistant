@@ -1,27 +1,19 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_CONTRACTOR_DETAILS } from '../utils/queries';
 
-function ContractorCard({ contractorId }) {
-    const { loading, error, data } = useQuery(GET_CONTRACTOR_DETAILS, {
-        variables: { contractorId: contractorId }
-    });
+function ContractorCard({ contractor }) {
+    // Check if the contractor prop exists. If not, return a message.
+    if (!contractor) return <p>No contractor data available</p>;
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-    if (!data || !data.contractor) return <p>No contractor data available</p>;
-
-    const contractor = data.contractor;
-
+    // Use the contractor prop directly to render the card content.
     return (
         <div className="contractor-card">
-            <img src={contractor.profilePic} alt="Profile" />
+            <img src={contractor.profilePic} alt={`${contractor.username}'s Profile`} />
             <h2>{contractor.username}</h2>
             <p>{contractor.bio}</p>
             <div className="work-images">
                 {contractor.workImages.map(image => (
                     <div key={image._id}>
-                        <img src={image.imageUrl} alt="Work" />
+                        <img src={image.imageUrl} alt={`Work by ${contractor.username}`} />
                         <p>{image.description}</p>
                     </div>
                 ))}
@@ -31,3 +23,4 @@ function ContractorCard({ contractorId }) {
 }
 
 export default ContractorCard;
+

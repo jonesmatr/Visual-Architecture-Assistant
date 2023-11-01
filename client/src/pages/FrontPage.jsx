@@ -130,11 +130,12 @@ const HomePage = () => {
     const renderContractors = () => {
         if (loading) return <p>Loading contractors...</p>;
         if (error) return <p>Error loading contractors: {error.message}</p>;
-
+    
         return data.contractors.map(contractor => (
-            <ContractorCard key={contractor._id} contractorId={contractor._id} />
+            <ContractorCard key={contractor._id} contractor={contractor} />
         ));
     };
+    
 
     return (
         <Layout>
