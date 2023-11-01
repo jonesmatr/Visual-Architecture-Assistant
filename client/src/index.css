@@ -23,7 +23,7 @@ html, body, #root {
   padding: 0;
   overflow: hidden; /* Optional: This prevents any unwanted scrollbars */
 }
-.custom-navbar {
+.custom-navbar .small-nav-link {
   height: 100px; /* or whatever height NAV you prefer */
   position: relative; /*this and absolute will not make the About Portfolio ... move along with the logo*/
 }
@@ -43,7 +43,7 @@ html, body, #root {
 .login-signup-nav {
   position: absolute; /*Again this wont move logo or Navbar-nav*/
   right: 5%; /* Adjust this value to move the Nav to the desired position */
-  top: 50%;
+  top: 80%;
   transform: translateY(-50%); /* This will vertically center the Nav */
 }
 
