@@ -103,9 +103,15 @@ export const GET_USER_PROFILE = gql`
       email
       profilePic
       bio
+      workImages {
+        _id
+        imageUrl
+        description
+      }
     }
   }
 `;
+
 
 
 

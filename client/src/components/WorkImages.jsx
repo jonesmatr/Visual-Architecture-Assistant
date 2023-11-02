@@ -24,13 +24,18 @@ function WorkImages() {
 
         openUploadWidget(options, (error, result) => {
             if (result.event === 'success') {
-                // Call the addWorkImage mutation and refetch queries as needed
-                addWorkImage({ 
-                    variables: { 
-                        imageUrl: result.info.url, 
-                        description: "",
-                    },
-                    refetchQueries: [{ query: GET_USER_WORK_IMAGES }],
+                // Use the addWorkImage mutation to add the new image
+                addWorkImage({
+                    variables: {
+                        imageUrl: result.info.url,
+                        description: "" // You might want to allow users to add a description here
+                    }
+                }).then(response => {
+                    // After adding the image, either refetch the images or update the cache
+                    console.log('Image added:', response.data.addWorkImage);
+                    // Optionally, update local state or Apollo cache here
+                }).catch(error => {
+                    console.error('Error adding image:', error);
                 });
             }
         });
@@ -57,16 +62,16 @@ function WorkImages() {
         <div className="work-images-container">
             <button onClick={handleImageUpload}>Upload Image</button>
             {images.map(image => (
-                <div key={image._id}>
-                    <img src={image.url} alt="Work" />
-                    <textarea 
-                        value={image.description} 
-                        onChange={e => handleDescriptionChange(image._id, e.target.value)}
-                        placeholder="Add a description"
-                    />
-                    <button onClick={() => handleDeleteImage(image._id)}>Delete</button>
-                </div>
-            ))}
+  <div key={image._id}>
+    <img src={image.imageUrl} alt="Work" /> {/* Corrected from image.url to image.imageUrl */}
+    <textarea 
+      value={image.description} 
+      onChange={e => handleDescriptionChange(image._id, e.target.value)}
+      placeholder="Add a description"
+    />
+    <button onClick={() => handleDeleteImage(image._id)}>Delete</button>
+  </div>
+))}
         </div>
     );
 }

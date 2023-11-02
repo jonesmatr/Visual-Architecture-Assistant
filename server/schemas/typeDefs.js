@@ -45,6 +45,8 @@ const typeDefs = gql`
     deleteImage(imageId: ID): Image
     updateProfilePic(imageUrl: String!): User
     updateBio(bio: String!): User
+    addWorkImage(imageUrl: String!, description: String): Image
+    deleteWorkImage(imageId: ID!): Image
   }
   type Auth {
     token: ID!
