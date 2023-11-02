@@ -633,3 +633,91 @@ body, html {
   text-align: left;
 }
 
+/*RESPONSIVE*/ /*RESPONSIVE*/ /*RESPONSIVE*/ /*RESPONSIVE*/ /*RESPONSIVE*/ /*RESPONSIVE*/ /*RESPONSIVE*/
+
+@media (max-width: 768px) {
+  /* Styles for tablets and mobile devices */
+  .custom-navbar .custom-nav-link {
+    font-size: 20px; /* Smaller font size */
+    margin-right: 15px; /* Less margin */
+  }
+
+  .describe-text {
+    font-size: 30px; /* Adjust size for smaller screens */
+  }
+
+  .design-text {
+    font-size: 20px; /* Adjust size for smaller screens */
+  }
+}
+
+@media (min-width: 1800px) {
+  /* Styles for large screens */
+  .container {
+    max-width: 1600px; /* Limit the width */
+    margin: 0 auto; /* Center the content */
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .custom-navbar .custom-nav-link {
+    font-size: 25px;
+    margin-right: 20px;
+  }
+}
+
+/* Adjust styles for smaller screens */
+@media (max-width: 768px) {
+  .custom-navbar .custom-nav-link {
+    font-size: 20px;
+    margin-right: 15px;
+  }
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+  }
+  .image-grid img {
+    max-width: 125px; /* Adjust as needed */
+  }
+  .image-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 image per row */
+    width: 30%; /* Adjust the width for smaller screens */
+    margin: 0 auto; /* Center the grid on smaller screens */
+    /* display: none; */
+  }
+  .image-grid img {
+    max-width: 200px; /* Adjust as needed */
+  }
+  .banner-description {
+    font-size: 14px; /* Slightly smaller font size for medium screens */
+  }
+}
+
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+      text-align: right;
+      background-color: #fff; 
+      z-index: 1030;
+  }
+  .login-signup-nav {
+      width: 100%;
+      justify-content: center;
+  }
+  .banner, .image-grid {
+  overflow: hidden; /* This ensures that child elements don't spill out */
+  }
+  .banner-description p{
+    font-size: 14px;
+  }
+  .banner-description h4{
+    font-size: 14px;
+  }
+}
+
+.image-grid {
+  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+}
+.image-grid img {
+  max-width: 200px; /* Adjust as needed */
+}
