@@ -10,6 +10,10 @@ const imageSchema = new Schema(
       type: String,
       trim: true,
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User', // Assuming your user model is named 'User'
+    },
     tags: [
       {
         type: String,

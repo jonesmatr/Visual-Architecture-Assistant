@@ -1,36 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useQuery } from '@apollo/client';
 import Layout from '../components/Layout';
 import ProfilePicture from '../components/ProfilePicture';
 import Bio from '../components/Bio';
-import WorkImages from '../components/WorkImages'; // Assuming you've named the component WorkImages
+import WorkImages from '../components/WorkImages';
+import { GET_USER_PROFILE } from '../utils/queries'; // Import the query for fetching the user profile
 
 const Portfolio = () => {
-    // These states will ideally be populated using an API call to your backend
-    // to fetch the contractor's current profile data.
-    const [initialProfilePic, setInitialProfilePic] = useState(''); // Default URL or empty string
-    const [initialBio, setInitialBio] = useState(''); // Default bio or empty string
-    const [initialImages, setInitialImages] = useState([]); // Array of images with their descriptions
+  // Use the useQuery hook to fetch the user profile data
+  const { data, loading, error } = useQuery(GET_USER_PROFILE);
 
-    // useEffect to fetch the contractor's data when the component mounts
-    useEffect(() => {
-        // TODO: Fetch the contractor's profile data from your backend and update the states.
-        // This can be done using fetch, axios, or any other method you prefer.
-    }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
-    return (
-        <Layout>
-            <h1>My Profile</h1>
+  // Assuming 'data.userProfile' contains the user profile data after the query
+  const userProfile = data.userProfile;
 
-            {/* Profile Picture Component */}
-            <ProfilePicture initialProfilePic={initialProfilePic} />
+  return (
+    <Layout>
+      <h1>My Profile</h1>
 
-            {/* Bio Component */}
-            <Bio initialBio={initialBio} />
+      {/* Profile Picture Component */}
+      <ProfilePicture initialProfilePic={userProfile.profilePic} />
 
-            {/* Work Images Component */}
-            <WorkImages initialImages={initialImages} />
-        </Layout>
-    );
-}
+      {/* Bio Component */}
+      <Bio initialBio={userProfile.bio} />
+
+      {/* Work Images Component - pass the work images as a prop */}
+      <WorkImages initialImages={userProfile.workImages || []} />
+    </Layout>
+  );
+};
 
 export default Portfolio;

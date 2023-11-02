@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import "../index.css";
+import { useQuery } from '@apollo/client';
+import { GET_ALL_CONTRACTORS } from '../utils/queries';
+import ContractorCard from '../components/ContractorCard';
 
 // Carousel Component
 const ImageGrid = () => {
@@ -122,6 +125,18 @@ const ContractorsCategories = () => {
 
 
 const HomePage = () => {
+    const { data, loading, error } = useQuery(GET_ALL_CONTRACTORS);
+
+    const renderContractors = () => {
+        if (loading) return <p>Loading contractors...</p>;
+        if (error) return <p>Error loading contractors: {error.message}</p>;
+    
+        return data.contractors.map(contractor => (
+            <ContractorCard key={contractor._id} contractor={contractor} />
+        ));
+    };
+    
+
     return (
         <Layout>
             <div className="home-page">
@@ -131,6 +146,9 @@ const HomePage = () => {
                         <BannerDescription />
                     </div>
                     <ImageGrid />
+                </div>
+                <div className="contractors-display">
+                    {renderContractors()}
                 </div>
                 <div className="main-section">
                     <Description />

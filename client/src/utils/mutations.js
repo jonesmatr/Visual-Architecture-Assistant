@@ -44,3 +44,67 @@ export const ADD_USER = gql`
             uploadedBy
         }
     }`;
+
+    
+export const UPDATE_PROFILE_PIC = gql`
+mutation UpdateProfilePic($imageUrl: String!) {
+    updateProfilePic(imageUrl: $imageUrl) {
+        _id
+        profilePic
+    }
+}
+`;
+
+export const DELETE_PROFILE_PIC = gql`
+mutation DeleteProfilePic {
+    deleteProfilePic {
+        _id
+        profilePic
+    }
+}
+`;
+
+export const UPDATE_BIO = gql`
+   mutation UpdateBio($bio: String!) {
+       updateBio(bio: $bio) {
+           _id
+           bio
+       }
+   }
+`;
+
+export const DELETE_BIO = gql`
+mutation DeleteBio {
+    deleteBio {
+        _id
+        bio
+    }
+}
+`;
+
+export const ADD_WORK_IMAGE = gql`
+mutation AddWorkImage($imageUrl: String!, $description: String) {
+    addWorkImage(imageUrl: $imageUrl, description: $description) {
+        _id
+        imageUrl
+        description
+    }
+}`;
+
+export const UPDATE_IMAGE_DESCRIPTION = gql`
+mutation UpdateImageDescription($imageId: ID!, $description: String!) {
+    updateImageDescription(imageId: $imageId, description: $description) {
+        _id
+        imageUrl
+        description
+    }
+}`;
+
+export const DELETE_WORK_IMAGE = gql`
+mutation DeleteWorkImage($imageId: ID!) {
+    deleteWorkImage(imageId: $imageId) {
+        _id
+        imageUrl
+    }
+}`;
+
