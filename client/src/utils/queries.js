@@ -33,6 +33,18 @@ export const GET_IMAGES = gql`
   }
 `;
 
+export const GET_USER_WORK_IMAGES = gql`
+  query GetUserWorkImages {
+    userProfile {
+      workImages {
+        _id
+        imageUrl
+        description
+      }
+    }
+  }
+`;
+
 export const GET_IMAGE_BY_ID = gql`
   query GetImage($imageId: ID!) {
     image(imageId: $imageId) {

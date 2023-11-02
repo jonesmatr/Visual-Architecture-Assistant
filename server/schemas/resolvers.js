@@ -16,8 +16,11 @@ cloudinary.config({
 
 const resolvers = {
   Query: {///this query is crashing app////
-    images: async () => {
-      return Image.find().sort({ createdAt: -1 });
+    images: async (_, __, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to view images.');
+      }
+      return Image.find({ uploadedBy: context.user._id }).sort({ createdAt: -1 });
     },
     image: async (_parent, { imageId }) => {
       return Image.findOne({ _id: imageId });
@@ -126,38 +129,30 @@ const resolvers = {
     },
 
     deleteImage: async (_, { imageId }, context) => {
-      try {
-        // Check if the user is authenticated (you can add your authentication logic here)
-        if (!context.user) {
-          throw new AuthenticationError(
-            "You must be logged in to delete an image"
-          );
-        }
-        // Find the image by ID
-        const image = await Image.findById(imageId);
-        if (!image) {
-          throw new Error("Image not found");
-        }
-        // Delete the image from Cloudinary
-        // const publicId = image.imageUrl.split("/").pop().split(".")[0];
-        const publicId = image.imageUrl;
-        
-        const result = await cloudinary.uploader.destroy(publicId);
-        if (result.result === "ok") {
-          // Image deleted successfully
-          // Update your database here (remove the reference to the deleted image)
-          await Image.deleteOne({ _id: imageId });
-          return image;
-        } else {
-          // Image deletion failed
-          throw new Error("Image not deleted");
-        }
-      } catch (error) {
-        console.error("Error deleting image:", error);
-        return false;
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to delete an image.');
+      }
+
+      // Find the image by ID and ensure the logged-in user is the owner
+      const image = await Image.findOne({ _id: imageId, uploadedBy: context.user._id });
+      if (!image) {
+        throw new Error('Image not found or you do not have permission to delete this image.');
+      }
+
+      // Delete the image from Cloudinary
+      const result = await cloudinary.uploader.destroy(image.imageUrl);
+
+      if (result.result === "ok") {
+        // Image deleted successfully, remove from database
+        await Image.deleteOne({ _id: imageId });
+        return image;
+      } else {
+        // Image deletion failed
+        throw new Error('Failed to delete image from Cloudinary.');
       }
     },
   },
 };
+
 
 module.exports = resolvers;
